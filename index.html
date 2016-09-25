@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8"/>
+		<meta name="author" content="Ivy Shi"/>
+		<meta name="author" content="Taylor Brown"/>
+		<meta name="author" content="Brandon S. Hang"/>
+		
+		<title>CRS-HIPEC Risk & Survival Prediction Tool</title>
+		
+		<link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alegreya+Sans+SC|Cardo:700">
+		<link type="text/css" rel="stylesheet" href="css/hipec-index.css"/>
+	</head>
+	
+	<body>
+		<h1>CRS-HIPEC Risk & Survival Prediction Tool: INPUT</h1>
+		<form id="prediction-form" method="POST">
+			<div class="form-category">
+				<h2 class="category-title collapsed">Core Variables</h2>
+				<ul>
+					<li>
+						<h3>Primary Tumor</h3>
+						<label><input type="radio" name="primary-tumor" value="0"/>Appendix</label>
+						<label><input type="radio" name="primary-tumor" value="1"/>Colorectal</label>
+						<label><input type="radio" name="primary-tumor" value="2"/>Mesothelioma</label>
+						<label><input type="radio" name="primary-tumor" value="3"/>Gastric</label>
+						<label><input type="radio" name="primary-tumor" value="4"/>Sarcoma</label>
+						<label><input type="radio" name="primary-tumor" value="5"/>Primary Peritoneal</label>
+					</li>
+					<li>
+						<h3>Age</h3>
+						<input name="age" type="range" min="18" max="90"/>
+						<span id="range-age"></span>
+					</li>
+					<li>
+						<h3>Charlson Co-morbidity Index</h3>
+						<input name="charlson" type="range" min="4" max="16"/>
+						<span id="range-charlson"></span>
+					</li>
+					<li>
+						<h3>Karnofsky's Performance Status</h3>
+						<input name="karnofsky" type="range" min="20" max="100"/>
+						<span id="range-karnofsky"></span>
+					</li>
+					<li>
+						<h3>Peritoneal Carcinomatosis Index</h3>
+						<input name="peri-carcinomatosis" type="range" min="0" max="28"/>
+						<span id="range-peri-carcinomatosis"></span>
+					</li>
+					<li>
+						<h3>Completeness of Cytoreduction Score</h3>
+						<label><input type="radio" name="cytoreduction-score" value="0"/>0</label>
+						<label><input type="radio" name="cytoreduction-score" value="1"/>1</label>
+						<label><input type="radio" name="cytoreduction-score" value="2"/>2</label>
+					</li>
+				</ul>
+			</div>
+			<div class="form-category">
+				<h2 class="category-title collapsed">Demographics/Co-morbidities</h2>
+			</div>
+			<input type="submit" value="Calculate HIPEC Risk"/>
+		</form>
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+		<script type="text/javascript" src="js/hipec-index.js"></script>
+	</body>
+</html>
