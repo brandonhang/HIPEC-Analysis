@@ -1,2 +1,6 @@
 css/.sass-cache/
 css/hipec-index.css.map
+tests/.settings
+tests/bin/
+tests/.classpath
+tests/.project
