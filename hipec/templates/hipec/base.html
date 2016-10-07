@@ -1,0 +1,24 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8"/>
+		<meta name="author" content="Ivy Shi"/>
+		<meta name="author" content="Taylor Brown"/>
+		<meta name="author" content="Brandon S. Hang"/>
+		
+		<title>CRS-HIPEC Risk & Survival Prediction Tool</title>
+		
+		<link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alegreya+Sans+SC|Cardo:700"/>
+		<link type="text/css" rel="stylesheet" href="{% static 'css/hipec-index.css' %}"/>
+		<link type="image/x-icon" rel="shortcut icon" href="{% static 'img/icons/favicon.ico' %}"/>
+	</head>
+	<body>
+		{% block form %}{% endblock %}
+		{% block results %}{% endblock %}
+		
+		<script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+		{% block scripts %}{% endblock %}
+	</body>
+</html>

@@ -1,0 +1,44 @@
+{% extends "hipec/base.html" %}
+
+{% block form %}
+	<div id="results">
+		<div class="form-category">
+			<table>
+				<tr>
+					<td>Name: John Doe</td>
+					<td>Primary Site: {{ results.primary_tumor }}</td>
+				</tr>
+				<tr>
+					<td>DOB: 05/28/1971</td>
+					<td>
+						Date of Visit: 
+						{% if results.today.month < 10 %}{{ 0 }}{% endif %}{{ results.today.month }}/
+						{% if results.today.day < 10 %}{{ 0 }}{% endif %}{{ results.today.day }}/
+						{{ results.today.year }}
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div class="form-category">
+			<h2 class="category-title collapsed">Entered Data</h2>
+			<strong>Primary Tumor:</strong>{{ results.primary_tumor }}<br>
+			<strong>Age:</strong>{{ results.age }}
+			<strong>Charlson Co-Morbidity Index:</strong>{{ results.charlson_co_morbidity }}<br>
+			<strong>Karnofsky's Performance Status:</strong>{{ results.karnofsky_performance }}<br>
+			<strong>Peritoneal Carcinomatosis Index:</strong>{{ results.peritoneal_carcinomatosis }}<br>
+			<strong>Completeness of Cytoreduction Score:</strong>{{ results.cytoreduction_completeness }}
+		</div>
+		<div class="form-category">
+			<h2 class="category-title collapsed">Length of Stay</h2>
+		</div>
+		<div class="form-category">
+			<h2 class="category-title collapsed">Discharge Disposition</h2>
+		</div>
+
+	<a href="/hipec-app/">New Calculation</a>
+{% endblock %}
+
+{% block scripts %}
+	{% load static %}
+	<script type="text/javascript" src="{% static 'js/hipec-results.js' %}"></script>
+{% endblock %}

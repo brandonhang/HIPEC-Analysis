@@ -1,5 +1,8 @@
-css/.sass-cache/
-css/hipec-index.css.map
+.project
+db.sqlite3
+*.pyc
+hipec/static/css/.sass-cache/
+hipec/static/css/hipec-index.css.map
 tests/.settings
 tests/bin/
 tests/.classpath

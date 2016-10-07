@@ -2,6 +2,7 @@
 	$.each($('input[type=range]'), function(index, input) {			// Displays initial values of input sliders
 		var value = $(input).val();
 		var name = $(input).attr('name');
+		console.log(name);
 		$('#range-' + name).text(value);
 	});
 	

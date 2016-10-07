@@ -1,0 +1,60 @@
+{% extends "hipec/base.html" %}
+
+{% block form %}
+	<h1>CRS-HIPEC Risk & Survival Prediction Tool: INPUT</h1>
+	<form id="prediction-form" action="/hipec/hipec-app/" method="POST">
+		{% csrf_token %}
+		<div class="form-category">
+			<h2 class="category-title collapsed">Core Variables</h2>
+			<ul>
+				<li>
+					<h3>Primary Tumor</h3>
+					<label><input type="radio" name="primary_tumor" value="appendix"/>Appendix</label>
+					<label><input type="radio" name="primary_tumor" value="colorectal"/>Colorectal</label>
+					<label><input type="radio" name="primary_tumor" value="mesothelioma"/>Mesothelioma</label>
+					<label><input type="radio" name="primary_tumor" value="gastric"/>Gastric</label>
+					<label><input type="radio" name="primary_tumor" value="sarcoma"/>Sarcoma</label>
+					<label><input type="radio" name="primary_tumor" value="primary peritoneal"/>Primary Peritoneal</label>
+				</li>
+				<li>
+					<h3>Age</h3>
+					<input name="age" type="range" min="18" max="90"/>
+					<span id="range-age"></span>
+				</li>
+				<li>
+					<h3>Charlson Co-morbidity Index</h3>
+					<input name="charlson_co_morbidity" type="range" min="4" max="16"/>
+					<span id="range-charlson_co_morbidity"></span>
+				</li>
+				<li>
+					<h3>Karnofsky's Performance Status</h3>
+					<input name="karnofsky_performance" type="range" min="20" max="100"/>
+					<span id="range-karnofsky_performance"></span>
+				</li>
+				<li>
+					<h3>Peritoneal Carcinomatosis Index</h3>
+					<input name="peritoneal_carcinomatosis" type="range" min="0" max="28"/>
+					<span id="range-peritoneal_carcinomatosis"></span>
+				</li>
+				<li>
+					<h3>Completeness of Cytoreduction Score</h3>
+					<label><input type="radio" name="cytoreduction_completeness" value="0"/>0</label>
+					<label><input type="radio" name="cytoreduction_completeness" value="1"/>1</label>
+					<label><input type="radio" name="cytoreduction_completeness" value="2"/>2</label>
+				</li>
+			</ul>
+		</div>
+		<div class="form-category">
+			<h2 class="category-title collapsed">Demographics/Co-morbidities</h2>
+		</div>
+		<div class="form-category">
+			<h2 class="category-title collapsed">Tumor Markers</h2>
+		</div>
+		<input type="submit" value="Calculate HIPEC Risk"/>
+	</form>
+{% endblock %}
+
+{% block scripts %}
+	{% load static %}
+	<script type="text/javascript" src="{% static 'js/hipec-index.js' %}"></script>
+{% endblock %}
