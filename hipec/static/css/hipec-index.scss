@@ -17,7 +17,7 @@ h1 {
 	font-size: 4em;
 }
 
-#prediction-form {
+#prediction-form, #results {
 	font-size: 2em;
 	
 	.form-category {
@@ -81,6 +81,14 @@ h1 {
 		&:active {
 			background-color: #42f076;
 		}
+	}
+}
+
+.registry {
+	width: 100%;
+	
+	td {
+		width: 50%;
 	}
 }
 
