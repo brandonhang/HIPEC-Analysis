@@ -45,9 +45,9 @@ h1 {
       #prediction-form .form-category ul label, #results .form-category ul label {
         display: inline-block;
         margin: 0.25em; }
-      #prediction-form .form-category ul input[type=range], #results .form-category ul input[type=range] {
-        display: none; }
-      #prediction-form .form-category ul li span, #results .form-category ul li span {
+      #prediction-form .form-category ul input[slide=true], #results .form-category ul input[slide=true] {
+        font-family: 'Alegreya Sans SC', 'Verdana', sans-serif;
+        font-size: 1em;
         float: right;
         width: 2em;
         text-align: center;
@@ -55,6 +55,11 @@ h1 {
         -webkit-border-radius: 1vw;
         -moz-border-radius: 1vw;
         border-radius: 1vw; }
+        #prediction-form .form-category ul input[slide=true]:focus, #results .form-category ul input[slide=true]:focus {
+          outline: none;
+          -moz-box-shadow: inset 0 0 0.2em black;
+          -webkit-box-shadow: inset 0 0 0.2em black;
+          box-shadow: inset 0 0 0.2em black; }
   #prediction-form input[type=submit], #results input[type=submit] {
     font-family: 'Alegreya Sans SC', 'Verdana', sans-serif;
     font-size: 1.5em;
