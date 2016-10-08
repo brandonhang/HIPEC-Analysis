@@ -20,21 +20,25 @@
 					<h3>Age</h3>
 					<input name="age" type="range" min="18" max="90"/>
 					<span id="range-age"></span>
+					<div class="slider" slide="age" id="nouisl-age"></div>
 				</li>
 				<li>
 					<h3>Charlson Co-morbidity Index</h3>
 					<input name="charlson_co_morbidity" type="range" min="4" max="16"/>
 					<span id="range-charlson_co_morbidity"></span>
+					<div class="slider" slide="charlson_co_morbidity" id="nouisl-charlson_co_morbidity"></div>
 				</li>
 				<li>
 					<h3>Karnofsky's Performance Status</h3>
 					<input name="karnofsky_performance" type="range" min="20" max="100"/>
 					<span id="range-karnofsky_performance"></span>
+					<div class="slider" slide="karnofsky_performance" id="nouisl-karnofsky_performance"></div>
 				</li>
 				<li>
 					<h3>Peritoneal Carcinomatosis Index</h3>
 					<input name="peritoneal_carcinomatosis" type="range" min="0" max="28"/>
 					<span id="range-peritoneal_carcinomatosis"></span>
+					<div class="slider" slide="peritoneal_carcinomatosis" id="nouisl-peritoneal_carcinomatosis"></div>
 				</li>
 				<li>
 					<h3>Completeness of Cytoreduction Score</h3>
@@ -56,5 +60,6 @@
 
 {% block scripts %}
 	{% load static %}
+	<script type="text/javascript" src="{% static 'js/nouislider.min.js' %}"></script>
 	<script type="text/javascript" src="{% static 'js/hipec-index.js' %}"></script>
 {% endblock %}

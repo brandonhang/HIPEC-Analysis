@@ -46,8 +46,15 @@ h1 {
         display: inline-block;
         margin: 0.25em; }
       #prediction-form .form-category ul input[type=range], #results .form-category ul input[type=range] {
-        width: 90%;
-        margin-right: 1em; }
+        display: none; }
+      #prediction-form .form-category ul li span, #results .form-category ul li span {
+        float: right;
+        width: 2em;
+        text-align: center;
+        border: 2px solid #3b94ed;
+        -webkit-border-radius: 1vw;
+        -moz-border-radius: 1vw;
+        border-radius: 1vw; }
   #prediction-form input[type=submit], #results input[type=submit] {
     font-family: 'Alegreya Sans SC', 'Verdana', sans-serif;
     font-size: 1.5em;
@@ -81,6 +88,21 @@ h1 {
   transform-origin: 50% 50%; }
 .collapsed + * {
   display: none; }
+
+.slider {
+  margin-bottom: 2em; }
+  .slider.noUi-target {
+    border-color: black; }
+  .slider .noUi-handle {
+    border-color: #888888; }
+    .slider .noUi-handle::before {
+      background: #AAAAAA; }
+    .slider .noUi-handle::after {
+      background: #AAAAAA; }
+  .slider .noUi-pips {
+    color: black; }
+  .slider .noUi-marker, .slider .noUi-marker-large {
+    background: #999999; }
 
 button {
   border: none; }

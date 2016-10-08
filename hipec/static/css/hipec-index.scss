@@ -60,8 +60,17 @@ h1 {
 			}
 			
 			input[type=range] {
-				width: 90%;
-				margin-right: 1em;
+				display: none;
+			}
+			
+			li {
+				span {
+					float: right;
+					width: 2em;
+					text-align: center;
+					border: 2px solid #3b94ed;
+					@include border-radius(1vw);
+				}
 			}
 		}
 	}
@@ -99,6 +108,34 @@ h1 {
 	
 	& + * {
 		display: none;
+	}
+}
+
+.slider {
+	margin-bottom: 2em;
+	
+	&.noUi-target {
+		border-color: black;
+	}
+	
+	.noUi-handle {
+		border-color: #888888;
+		
+		&::before {
+			background: #AAAAAA;
+		}
+		
+		&::after {
+			background: #AAAAAA;
+		}
+	}
+	
+	.noUi-pips {
+		color: black;
+	}
+	
+	.noUi-marker, .noUi-marker-large {
+		background: #999999;
 	}
 }
 
