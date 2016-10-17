@@ -53,4 +53,10 @@
 		var slider = document.getElementById('slide_' + name);
 		slider.noUiSlider.set(value);
 	});
+	/*
+	$('#prediction-form').on('submit', function(event) {
+		if ()
+			event.preventDefault();
+		}
+	})*/
 })(jQuery);
