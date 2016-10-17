@@ -31,22 +31,25 @@
 				</li>
 				<li>
 					<h3>Age</h3>
-					<input name="core_age" type="number" min="18" max="90" pips="10" slide="true"/>
+					<input name="core_age__upper" type="number" min="18" max="99" slide="true" spread="true"/>
+					<input name="core_age__lower" type="number" min="18" max="99" slide="true" spread="true"/>
 					<div class="slider" slide="core_age" id="slide_core_age"></div>
 				</li>
 				<li>
 					<h3>Charlson Co-morbidity Index</h3>
-					<input name="core_charlson" type="number" min="4" max="16" pips="13" slide="true"/>
+					<input name="core_charlson__upper" type="number" min="6" max="18" slide="true" spread="true"/>
+					<input name="core_charlson__lower" type="number" min="6" max="18" slide="true" spread="true"/>
 					<div class="slider" slide="core_charlson" id="slide_core_charlson"></div>
 				</li>
 				<li>
 					<h3>Karnofsky's Performance Status</h3>
-					<input name="core_karnofsky" type="number" min="20" max="100" pips="11" slide="true"/>
+					<input name="core_karnofsky" type="number" min="10" max="100" slide="true"/>
 					<div class="slider" slide="core_karnofsky" id="slide_core_karnofsky"></div>
 				</li>
 				<li>
 					<h3>Peritoneal Carcinomatosis Index</h3>
-					<input name="core_peritoneal" type="number" min="0" max="28" pips="8" slide="true"/>
+					<input name="core_peritoneal__upper" type="number" min="0" max="39" slide="true" spread="true"/>
+					<input name="core_peritoneal__lower" type="number" min="0" max="39" slide="true" spread="true"/>
 					<div class="slider" slide="core_peritoneal" id="slide_core_peritoneal"></div>
 				</li>
 				<li>
@@ -69,6 +72,7 @@
 
 {% block scripts %}
 	{% load static %}
+	<script type="text/javascript" src="{% static 'js/index-category-headers.js' %}"></script>
 	<script type="text/javascript" src="{% static 'js/nouislider.min.js' %}"></script>
-	<script type="text/javascript" src="{% static 'js/hipec-index.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/index-slider.js' %}"></script>
 {% endblock %}
