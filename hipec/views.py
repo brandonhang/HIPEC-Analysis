@@ -10,10 +10,13 @@ class HipecVariables(forms.Form):
 	
 	# Core Variables
 	core_primary_tumor = forms.CharField(max_length=64)
-	core_age = forms.IntegerField()
-	core_charlson = forms.IntegerField()
+	core_age__upper = forms.IntegerField()
+	core_age__lower = forms.IntegerField()
+	core_charlson__upper = forms.IntegerField()
+	core_charlson__lower = forms.IntegerField()
 	core_karnofsky = forms.IntegerField()
-	core_peritoneal = forms.IntegerField()
+	core_peritoneal__upper = forms.IntegerField()
+	core_peritoneal__lower = forms.IntegerField()
 	core_cytoreduction = forms.IntegerField()
 
 def hipec_app(request):

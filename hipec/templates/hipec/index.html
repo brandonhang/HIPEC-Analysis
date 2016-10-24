@@ -22,12 +22,20 @@
 			<ul>
 				<li>
 					<h3>Primary Tumor</h3>
-					<label><input type="radio" name="core_primary_tumor" value="appendix"/>Appendix</label>
-					<label><input type="radio" name="core_primary_tumor" value="colorectal"/>Colorectal</label>
-					<label><input type="radio" name="core_primary_tumor" value="mesothelioma"/>Mesothelioma</label>
-					<label><input type="radio" name="core_primary_tumor" value="gastric"/>Gastric</label>
-					<label><input type="radio" name="core_primary_tumor" value="sarcoma"/>Sarcoma</label>
-					<label><input type="radio" name="core_primary_tumor" value="primary peritoneal"/>Primary Peritoneal</label>
+					<label><input type="radio" name="core_primary_tumor" value="Appendix"/>Appendix</label>
+					<label><input type="radio" name="core_primary_tumor" value="Colorectal"/>Colorectal</label>
+					<label><input type="radio" name="core_primary_tumor" value="Gastric"/>Gastric</label>
+					<label><input type="radio" name="core_primary_tumor" value="Mesothelioma"/>Mesothelioma</label>
+					<label><input type="radio" name="core_primary_tumor" value="Ovarian"/>Ovarian</label>
+					<label><input type="radio" name="core_primary_tumor" value="Pancreatic"/>Pancreatic</label>
+					<label><input type="radio" name="core_primary_tumor" value="Sarcoma/GIST"/>Sarcoma/GIST</label>
+					<label><input type="radio" name="core_primary_tumor" value="Gyn Onc (Non-Ovarian)"/>Gyn Onc (Non-Ovarian)</label>
+					<label><input type="radio" name="core_primary_tumor" value="Genitourinary"/>Genitourinary</label>
+					<label><input type="radio" name="core_primary_tumor" value="Hepatobiliary"/>Hepatobiliary</label>
+					<label><input type="radio" name="core_primary_tumor" value="Unknown Primary"/>Unknown Primary</label>
+					<label><input type="radio" name="core_primary_tumor" value="Breast"/>Breast</label>
+					<label><input type="radio" name="core_primary_tumor" value="Neuroendocrine"/>Neuroendocrine</label>
+					<label><input type="radio" name="core_primary_tumor" value="Small Bowel"/>Small Bowel</label>
 				</li>
 				<li>
 					<h3>Age</h3>
@@ -36,24 +44,24 @@
 					<div class="slider" slide="core_age" id="slide_core_age"></div>
 				</li>
 				<li>
-					<h3>Charlson Co-morbidity Index</h3>
+					<h3>CCI</h3>
 					<input name="core_charlson__upper" type="number" min="6" max="18" slide="true" spread="true"/>
 					<input name="core_charlson__lower" type="number" min="6" max="18" slide="true" spread="true"/>
 					<div class="slider" slide="core_charlson" id="slide_core_charlson"></div>
 				</li>
 				<li>
-					<h3>Karnofsky's Performance Status</h3>
+					<h3>KPS</h3>
 					<input name="core_karnofsky" type="number" min="10" max="100" slide="true"/>
 					<div class="slider" slide="core_karnofsky" id="slide_core_karnofsky"></div>
 				</li>
 				<li>
-					<h3>Peritoneal Carcinomatosis Index</h3>
+					<h3>PCI</h3>
 					<input name="core_peritoneal__upper" type="number" min="0" max="39" slide="true" spread="true"/>
 					<input name="core_peritoneal__lower" type="number" min="0" max="39" slide="true" spread="true"/>
 					<div class="slider" slide="core_peritoneal" id="slide_core_peritoneal"></div>
 				</li>
 				<li>
-					<h3>Completeness of Cytoreduction Score</h3>
+					<h3>CC Score</h3>
 					<label><input type="radio" name="core_cytoreduction" value="0"/>0</label>
 					<label><input type="radio" name="core_cytoreduction" value="1"/>1</label>
 					<label><input type="radio" name="core_cytoreduction" value="2"/>2</label>
@@ -62,6 +70,8 @@
 		</div>
 		<div class="form-category">
 			<h2 class="category-title collapsed">Demographics/Co-morbidities</h2>
+			<ul>
+				
 		</div>
 		<div class="form-category">
 			<h2 class="category-title collapsed">Tumor Markers</h2>
