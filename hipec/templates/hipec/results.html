@@ -34,6 +34,27 @@
 			</table>
 		</div>
 		<div class="form-category">
+			<h2 class="category-title collapsed">Length of Stay</h2>
+		</div>
+		<div class="form-category">
+			<h2 class="category-title collapsed">Discharge Disposition</h2>
+		</div>
+		<div class="form-category">
+			<h2 class="category-title collapsed">Readmission</h2>
+		</div>
+		<div class="form-category">
+			<h2 class="category-title collapsed">Morbidity (90 days)</h2>
+		</div>
+		<div class="form-category">
+			<h2 class="category-title collapsed">Mortality (90 days)</h2>
+		</div>
+		<div class="form-category">
+			<h2 class="category-title collapsed">Overall Survival</h2>
+		</div>
+		<div class="form-category">
+			<h2 class="category-title collapsed">Progression-Free Survival</h2>
+		</div>
+		<div class="form-category">
 			<h2 class="category-title collapsed">Entered Data</h2>
 			<div>
 				<strong>Primary Tumor: </strong>{{ results.core_primary_tumor }}<br>
@@ -44,14 +65,9 @@
 				<strong>Completeness of Cytoreduction Score: </strong>{{ results.core_cytoreduction }}
 			</div>
 		</div>
-		<div class="form-category">
-			<h2 class="category-title collapsed">Length of Stay</h2>
-		</div>
-		<div class="form-category">
-			<h2 class="category-title collapsed">Discharge Disposition</h2>
-		</div>
 
 	<a href="/hipec/hipec-app/">New Calculation</a>
+	<a href="#" onclick="window.history.go(-1); return false;">Adjust Calculation</a>
 {% endblock %}
 
 {% block scripts %}
