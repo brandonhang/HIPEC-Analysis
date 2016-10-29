@@ -182,9 +182,8 @@ class SurvivalAnalysis(models.Model):
 			q1 = numpy.percentile(data_list, 25)
 			median = numpy.percentile(data_list, 50)
 			q3 = numpy.percentile(data_list, 75)
-			iqr = q3 - q1
 			
-			return {'Median': median, 'IQR': iqr}
+			return {'Median': median, 'Q1': q1, 'Q3': q3}
 		''' End sample_hospital_length_of_stay() '''
 		
 		def sample_disposition_status(data_list):
@@ -226,8 +225,8 @@ class SurvivalAnalysis(models.Model):
 				pickle.dump(hipec_data, handle, protocol=pickle.HIGHEST_PROTOCOL)
 		
 		today = datetime.date.today()
-		hospital = get_all_hipec_data_of('HospitalStay', hipec_data)
-		hospital = sample_hospital_length_of_stay(hospital)
+		hospital_hist = get_all_hipec_data_of('HospitalStay', hipec_data)
+		hospital = sample_hospital_length_of_stay(hospital_hist)
 		disposition = get_all_hipec_data_of('Disposition', hipec_data)
 		disposition = sample_disposition_status(disposition)
 		readmission = get_all_hipec_data_of('Readmission', hipec_data)
@@ -237,7 +236,8 @@ class SurvivalAnalysis(models.Model):
 		mortality = get_all_hipec_data_of('Mortality90', hipec_data)
 		mortality = sample_yes_no_answer(mortality)
 		captured_data.update({'today': today})
-		captured_data.update({'Hospital': hospital})
+		captured_data.update({'HospitalHistogram': hospital_hist})
+		captured_data.update({'HospitalRange': hospital})
 		captured_data.update({'Disposition': disposition})
 		captured_data.update({'Readmission': readmission})
 		captured_data.update({'Morbidity': morbidity})
