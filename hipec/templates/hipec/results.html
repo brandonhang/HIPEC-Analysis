@@ -35,6 +35,19 @@
 		</div>
 		<div class="form-category">
 			<h2 class="category-title collapsed">Length of Stay</h2>
+			<ul>
+				<div id="hospital-histogram" class="graph"></div>
+				<li>Median = {{ results.HospitalRange.Median }}
+					{% if results.HospitalRange.Median == 1 %}
+						day
+					{% else %}
+						days
+					{% endif %}
+				</li>
+				<li>
+					IQR = {{ results.HospitalRange.Q1 }}&ndash;{{ results.HospitalRange.Q3}}
+				</li>
+			</ul>
 		</div>
 		<div class="form-category">
 			<h2 class="category-title collapsed">Discharge Disposition</h2>
@@ -72,5 +85,10 @@
 
 {% block scripts %}
 	{% load static %}
+	<script type="text/javascript" src="{% static 'js/g-charts.js' %}"></script>
 	<script type="text/javascript" src="{% static 'js/hipec-results.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/build_graphs.js' %}"></script>
+	<script id="grapher">
+		buildGraphs("{{ results }}");
+	</script>
 {% endblock %}
