@@ -78,6 +78,11 @@
 		</div>
 		<input type="submit" value="Calculate HIPEC Risk"/>
 	</form>
+	
+	{% load static %}
+	<div id="loading">
+		<img src="{% static 'img/icons/rolling.svg' %}"/>
+	</div>
 {% endblock %}
 
 {% block scripts %}
@@ -85,4 +90,5 @@
 	<script type="text/javascript" src="{% static 'js/index-category-headers.js' %}"></script>
 	<script type="text/javascript" src="{% static 'js/nouislider.min.js' %}"></script>
 	<script type="text/javascript" src="{% static 'js/index-slider.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/index-loader.js' %}"></script>
 {% endblock %}
