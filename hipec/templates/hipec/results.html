@@ -19,8 +19,8 @@
 						{% if results.registry_dob is None %}
 							--
 						{% else %}
-							{% if results.today.month < 10 %}{{ 0 }}{% endif %}{{ results.registry_dob.month }}/
-							{% if results.today.day < 10 %}{{ 0 }}{% endif %}{{ results.registry_dob.day }}/
+							{% if results.registry_dob.month < 10 %}{{ 0 }}{% endif %}{{ results.registry_dob.month }}/
+							{% if results.registry_dob.day < 10 %}{{ 0 }}{% endif %}{{ results.registry_dob.day }}/
 							{{ results.registry_dob.year }}
 						{% endif %}
 					</td>
@@ -37,15 +37,11 @@
 			<h2 class="category-title collapsed">Length of Stay</h2>
 			<ul>
 				<div id="hospital-histogram" class="graph"></div>
-				<li>Median = {{ results.HospitalRange.Median }}
-					{% if results.HospitalRange.Median == 1 %}
-						day
-					{% else %}
-						days
-					{% endif %}
+				<li>
+					Median = <span id="median"></span>
 				</li>
 				<li>
-					IQR = {{ results.HospitalRange.Q1 }}&ndash;{{ results.HospitalRange.Q3}}
+					IQR = <span id="iqr"></span> days
 				</li>
 			</ul>
 		</div>
