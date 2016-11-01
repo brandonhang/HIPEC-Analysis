@@ -221,6 +221,8 @@ class SurvivalAnalysis(models.Model):
 			return answer
 		''' End sample_yes_no_answer() '''
 		
+		''' Filters out and returns patient information based on the core
+		variable parameters. '''
 		def filter_patient_data(data):
 			filtered = {}
 			
@@ -241,11 +243,14 @@ class SurvivalAnalysis(models.Model):
 						filtered[(p_id, op_num)] = op_data
 			
 			return filtered
+		''' End filter_patient_data() '''
 		
+		# Setup the Python pickle object file
 		modded = int(os.path.getmtime('hipec\\data\\HIPEC_data.xlsx'))
 		modded = str(modded)
 		pickle_path = 'hipec\\data\\hipec_data-' + modded + '.pickle'
 		
+		# Attempt to load the Python pickle, otherwise create a new one
 		try:
 			with open(pickle_path, 'rb') as handle:
 				hipec_data = pickle.load(handle)
@@ -255,11 +260,14 @@ class SurvivalAnalysis(models.Model):
 			with open(pickle_path, 'wb') as handle:
 				pickle.dump(hipec_data, handle, protocol=pickle.HIGHEST_PROTOCOL)
 		
+		# Filter out the data
 		filtered_data = filter_patient_data(hipec_data)
 		
+		# Response if no data exists to meet all criteria; not yet implemented
 		if len(filtered_data) == 0:
 			return captured_data
 		
+		# A lot of the values below are used more for testing proof-of-concept
 		today = datetime.date.today()
 		hospital = get_all_hipec_data_of('HospitalStay', filtered_data)
 		disposition = get_all_hipec_data_of('Disposition', filtered_data)
