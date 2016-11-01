@@ -24,7 +24,7 @@ def hipec_app(request):
 		form = HipecVariables(request.POST)
 		
 		if form.is_valid():
-			results = SurvivalAnalysis.dummy_function(form.cleaned_data)
+			results = SurvivalAnalysis.filter_data(form.cleaned_data)
 			return render(request, 'hipec/results.html', {'results': results})
 	
 	else:
