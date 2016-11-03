@@ -22,20 +22,68 @@
 			<ul>
 				<li>
 					<h3>Primary Tumor</h3>
-					<label><input type="radio" name="core_primary_tumor" value="Appendiceal"/>Appendix</label>
-					<label><input type="radio" name="core_primary_tumor" value="Colorectal"/>Colorectal</label>
-					<label><input type="radio" name="core_primary_tumor" value="Gastric"/>Gastric</label>
-					<label><input type="radio" name="core_primary_tumor" value="Mesothelioma"/>Mesothelioma</label>
-					<label><input type="radio" name="core_primary_tumor" value="Ovarian"/>Ovarian</label>
-					<label><input type="radio" name="core_primary_tumor" value="Pancreatic"/>Pancreatic</label>
-					<label><input type="radio" name="core_primary_tumor" value="Sarcoma/GIST"/>Sarcoma/GIST</label>
-					<label><input type="radio" name="core_primary_tumor" value="Gyn Onc(Non Ovarian)"/>Gyn Onc (Non-Ovarian)</label>
-					<label><input type="radio" name="core_primary_tumor" value="Urinary"/>Genitourinary</label>
-					<label><input type="radio" name="core_primary_tumor" value="HPB"/>Hepatobiliary</label>
-					<label><input type="radio" name="core_primary_tumor" value="Unknown Primary"/>Unknown Primary</label>
-					<label><input type="radio" name="core_primary_tumor" value="Breast"/>Breast</label>
-					<label><input type="radio" name="core_primary_tumor" value="NeuroEndocrine"/>Neuroendocrine</label>
-					<label><input type="radio" name="core_primary_tumor" value="Small Bowel"/>Small Bowel</label>
+					<div class="column-group">
+						<div class="column">
+							<label class="control control-radio">Appendix
+								<input type="radio" name="core_primary_tumor" value="Appendiceal"/>
+								<div class="control-indicator"></div>
+							</label><br>
+							<label class="control control-radio">Breast
+								<input type="radio" name="core_primary_tumor" value="Breast"/>
+								<div class="control-indicator"></div>
+							</label><br>
+							<label class="control control-radio">Colorectal
+								<input type="radio" name="core_primary_tumor" value="Colorectal"/>
+								<div class="control-indicator"></div>
+							</label>
+							<label class="control control-radio">Gastric
+								<input type="radio" name="core_primary_tumor" value="Gastric"/>
+								<div class="control-indicator"></div>
+							</label>
+							<label class="control control-radio">Genitourinary
+								<input type="radio" name="core_primary_tumor" value="Urinary"/>
+								<div class="control-indicator"></div>
+							</label>
+							<label class="control control-radio">Gyn Onc (Non-Ovarian)
+								<input type="radio" name="core_primary_tumor" value="Gyn Onc(Non Ovarian)"/>
+								<div class="control-indicator"></div>
+							</label>
+							<label class="control control-radio">Hepatobiliary
+								<input type="radio" name="core_primary_tumor" value="HPB"/>
+								<div class="control-indicator"></div>
+							</label>
+						</div>
+						<div class="column">
+							<label class="control control-radio">Mesothelioma
+								<input type="radio" name="core_primary_tumor" value="Mesothelioma"/>
+								<div class="control-indicator"></div>
+							</label>
+							<label class="control control-radio">Neuroendocrine
+								<input type="radio" name="core_primary_tumor" value="NeuroEndocrine"/>
+								<div class="control-indicator"></div>
+							</label>
+							<label class="control control-radio">Ovarian
+								<input type="radio" name="core_primary_tumor" value="Ovarian"/>
+								<div class="control-indicator"></div>
+							</label>
+							<label class="control control-radio">Pancreatic
+								<input type="radio" name="core_primary_tumor" value="Pancreatic"/>
+								<div class="control-indicator"></div>
+							</label>
+							<label class="control control-radio">Sarcoma/GIST
+								<input type="radio" name="core_primary_tumor" value="Sarcoma/GIST"/>
+								<div class="control-indicator"></div>
+							</label>
+							<label class="control control-radio">Small Bowel
+								<input type="radio" name="core_primary_tumor" value="Small Bowel"/>
+								<div class="control-indicator"></div>
+							</label>
+							<label class="control control-radio">Unknown Primary
+								<input type="radio" name="core_primary_tumor" value="Unknown Primary"/>
+								<div class="control-indicator"></div>
+							</label>
+						</div>
+					</div>
 				</li>
 				<li>
 					<h3>Age</h3>
@@ -62,16 +110,160 @@
 				</li>
 				<li>
 					<h3>CC Score</h3>
-					<label><input type="radio" name="core_cytoreduction" value="0"/>0</label>
-					<label><input type="radio" name="core_cytoreduction" value="1"/>1</label>
-					<label><input type="radio" name="core_cytoreduction" value="2"/>2</label>
+					<label class="control control-radio">0
+						<input type="radio" name="core_cytoreduction" value="0"/>
+						<div class="control-indicator"></div>
+					</label>
+					<label class="control control-radio">1
+						<input type="radio" name="core_cytoreduction" value="1"/>
+						<div class="control-indicator"></div>
+					</label>
+					<label class="control control-radio">2
+						<input type="radio" name="core_cytoreduction" value="2"/>
+						<div class="control-indicator"></div>
+					</label>
 				</li>
 			</ul>
 		</div>
 		<div class="form-category">
 			<h2 class="category-title collapsed">Demographics/Co-morbidities</h2>
 			<ul>
-				
+				<li>
+					<h3>Gender</h3>
+					<label class="control control-checkbox">Male
+						<input class="optional" type="checkbox" name="dem_gender" value="Male"/>
+						<div class="control-indicator"></div>
+					</label>
+					<label class="control control-checkbox">Female
+						<input class="optional" type="checkbox" name="dem_gender" value="Female"/>
+						<div class="control-indicator"></div>
+					</label>
+				</li>
+				<li>
+					<h3>Race</h3>
+					<label class="control control-checkbox">Asian
+						<input class="optional" type="checkbox" name="dem_race" value="Asian"/>
+						<div class="control-indicator"></div>
+					</label>
+					<label class="control control-checkbox">Black/African American
+						<input class="optional" type="checkbox" name="dem_race" value="Black/African American"/>
+						<div class="control-indicator"></div>
+					</label>
+					<label class="control control-checkbox">Hispanic
+						<input class="optional" type="checkbox" name="dem_race" value="Hispanic"/>
+						<div class="control-indicator"></div>
+					</label>
+					<label class="control control-checkbox">Middle Eastern
+						<input class="optional" type="checkbox" name="dem_race" value="Middle Eastern"/>
+						<div class="control-indicator"></div>
+					</label>
+					<label class="control control-checkbox">Native American
+						<input class="optional" type="checkbox" name="dem_race" value="Native American"/>
+						<div class="control-indicator"></div>
+					</label>
+					<label class="control control-checkbox">White
+						<input class="optional" type="checkbox" name="dem_race" value="White"/>
+						<div class="control-indicator"></div>
+					</label>
+				</li>
+				<li>
+					<h3>Pre-Op BMI</h3>
+					<label class="control control-checkbox">Enabled
+						<input class="optional" type="checkbox" name="enable_dem_bmi" value="1"/>
+						<div class="control-indicator"></div>
+					</label>
+					<input name="dem_bmi__upper" type="number" min="10" max="70" slide="true" spread="true"/>
+					<input name="dem_bmi__lower" type="number" min="10" max="70" slide="true" spread="true"/>
+					<div class="slider" slide="dem_bmi" id="slide_dem_bmi"></div>
+				</li>
+				<li>
+					<h3>ASA Score</h3>
+					<label class="control control-checkbox">ASA 1 - Normal Healthy Patient
+						<input class="optional" type="checkbox" name="dem_asa" value="1"/>
+						<div class="control-indicator"></div>
+					</label><br>
+					<label class="control control-checkbox">ASA 2 - Mild Systemic Disease
+						<input class="optional" type="checkbox" name="dem_asa" value="2"/>
+						<div class="control-indicator"></div>
+					</label><br>
+					<label class="control control-checkbox">ASA 3 - Severe Systemic Disease
+						<input class="optional" type="checkbox" name="dem_asa" value="3"/>
+						<div class="control-indicator"></div>
+					</label><br>
+					<label class="control control-checkbox">ASA 4 - Severe Systemic Dieases (Life Threatening)
+						<input class="optional" type="checkbox" name="dem_asa" value="4"/>
+						<div class="control-indicator"></div>
+					</label>
+				</li>
+				<li>
+					<h3>History of Depression Pre-Op</h3>
+					<label class="control control-checkbox">Yes
+						<input class="optional" type="checkbox" name="dem_depression" value="Yes"/>
+						<div class="control-indicator"></div>
+					</label>
+					<label class="control control-checkbox">No
+						<input class="optional" type="checkbox" name="dem_depression" value="No"/>
+						<div class="control-indicator"></div>
+					</label>
+				</li>
+				<li>
+					<h3>Beta Blocker</h3>
+					<label class="control control-checkbox">Yes
+						<input class="optional" type="checkbox" name="dem_beta_block" value="Yes"/>
+						<div class="control-indicator"></div>
+					</label>
+					<label class="control control-checkbox">No
+						<input class="optional" type="checkbox" name="dem_beta_block" value="No"/>
+						<div class="control-indicator"></div>
+					</label>
+				</li>
+				<li>
+					<h3>Antidepressant</h3>
+					<label class="control control-checkbox">Yes
+						<input class="optional" type="checkbox" name="dem_antidepr" value="Yes"/>
+						<div class="control-indicator"></div>
+					</label>
+					<label class="control control-checkbox">No
+						<input class="optional" type="checkbox" name="dem_antidepr" value="No"/>
+						<div class="control-indicator"></div>
+					</label>
+				</li>
+				<li>
+					<h3>Smoker</h3>
+					<label class="control control-checkbox">Yes
+						<input class="optional" type="checkbox" name="dem_smoker" value="Yes"/>
+						<div class="control-indicator"></div>
+					</label>
+					<label class="control control-checkbox">No
+						<input class="optional" type="checkbox" name="dem_smoker" value="No"/>
+						<div class="control-indicator"></div>
+					</label>
+				</li>
+				<li>
+					<h3>Smoking Status</h3>
+					<label class="control control-checkbox">Current
+						<input class="optional" type="checkbox" name="dem_smoke_status" value="Current"/>
+						<div class="control-indicator"></div>
+					</label>
+					<label class="control control-checkbox">Former
+						<input class="optional" type="checkbox" name="dem_smoke_status" value="Former"/>
+						<div class="control-indicator"></div>
+					</label>
+					<label class="control control-checkbox">Never
+						<input class="optional" type="checkbox" name="dem_smoke_status" value="Never"/>
+						<div class="control-indicator"></div>
+					</label>
+				</li>
+				<li>
+					<h3>Number of Packs/Year</h3>
+					<label class="control control-checkbox">Enabled
+						<input class="optional" type="checkbox" name="enable_dem_bmi" value="1"/>
+						<div class="control-indicator"></div>
+					</label>
+					<input name="dem_smoke_pack__upper" type="number" min="0" max="60" slide="true" spread="true"/>
+					<input name="dem_smoke_pack__lower" type="number" min="0" max="60" slide="true" spread="true"/>
+					<div class="slider" slide="dem_smoke_pack" id="slide_dem_smoke_pack"></div>
+			</ul>
 		</div>
 		<div class="form-category">
 			<h2 class="category-title collapsed">Tumor Markers</h2>
@@ -91,4 +283,5 @@
 	<script type="text/javascript" src="{% static 'js/nouislider.min.js' %}"></script>
 	<script type="text/javascript" src="{% static 'js/index-slider.js' %}"></script>
 	<script type="text/javascript" src="{% static 'js/index-loader.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/index-optionals.js' %}"></script>
 {% endblock %}

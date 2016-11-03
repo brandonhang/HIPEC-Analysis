@@ -89,6 +89,12 @@ h1 {
     #prediction-form input[type=submit]:active, #results input[type=submit]:active {
       background-color: #42f076; }
 
+.column-group .column {
+  width: 47%;
+  display: inline-block; }
+  .column-group .column label {
+    display: block !important; }
+
 .registry {
   width: 100%; }
   .registry td {
@@ -151,5 +157,63 @@ button {
   color: white;
   z-index: 9001;
   display: none; }
+
+.control {
+  font-size: 1em;
+  position: relative;
+  display: block;
+  padding-left: 1.25em;
+  cursor: pointer; }
+  .control input {
+    position: absolute;
+    z-index: -1;
+    opacity: 0; }
+    .control input:checked ~ .control-indicator {
+      background: #2aa1c0; }
+      .control input:checked ~ .control-indicator::after {
+        display: block; }
+
+.control-indicator {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1em;
+  height: 1em;
+  background: #e6e6e6; }
+  .control-indicator::after {
+    position: absolute;
+    display: none;
+    content: ''; }
+
+.control-radio .control-indicator {
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%; }
+  .control-radio .control-indicator::after {
+    top: 0.25em;
+    left: 0.25em;
+    width: 0.5em;
+    height: 0.5em;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    background: #fff; }
+
+.control-checkbox .control-indicator::after {
+  top: 0.15em;
+  left: 0.35em;
+  width: 0.2em;
+  height: 0.5em;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+  -webkit-transform-origin: 50% 50%;
+  -moz-transform-origin: 50% 50%;
+  -ms-transform-origin: 50% 50%;
+  transform-origin: 50% 50%;
+  border: solid #fff;
+  border-width: 0 2px 2px 0; }
 
 /*# sourceMappingURL=hipec-index.css.map */
