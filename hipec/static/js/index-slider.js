@@ -34,6 +34,24 @@ var coreSliders = [
 		'pips': 14,
 		'steps': 1,
 		'density': 3
+	},
+	{
+		'name': 'dem_bmi',
+		'type': 'continuous',
+		'min': 10,
+		'max': 70,
+		'pips': 11,
+		'steps': 1,
+		'density': 3
+	},
+	{
+		'name': 'dem_smoke_pack',
+		'type': 'continuous',
+		'min': 0,
+		'max': 60,
+		'pips': 11,
+		'steps': 1,
+		'density': 3
 	}
 ];
 
