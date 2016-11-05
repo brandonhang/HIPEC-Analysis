@@ -38,30 +38,70 @@
 			<ul>
 				<div id="hospital-histogram" class="graph"></div>
 				<li>
-					Median = <span id="median"></span>
+					Median = <span id="hospital-median"></span>
 				</li>
 				<li>
-					IQR = <span id="iqr"></span> days
+					IQR = <span id="hospital-iqr"></span> days
 				</li>
 			</ul>
 		</div>
 		<div class="form-category">
 			<h2 class="category-title collapsed">Discharge Disposition</h2>
+			<ul>
+				<h4 class="percent">
+					<span id="disposition-percent"></span> % Disharged Home
+				</h4>
+			</ul>
 		</div>
 		<div class="form-category">
 			<h2 class="category-title collapsed">Readmission</h2>
+			<ul>
+				<h4 class="percent"><span id="readmission-percent"></span> %</h4>
+			</ul>
 		</div>
 		<div class="form-category">
 			<h2 class="category-title collapsed">Morbidity (90 days)</h2>
+			<ul>
+				<h4 class="percent"><span id="morbidity-percent"></span> %</h4>
 		</div>
 		<div class="form-category">
 			<h2 class="category-title collapsed">Mortality (90 days)</h2>
-		</div>
-		<div class="form-category">
-			<h2 class="category-title collapsed">Overall Survival</h2>
+			<ul>
+				<h4 class="percent"><span id="mortality-percent"></span> %</h4>
+			</ul>
 		</div>
 		<div class="form-category">
 			<h2 class="category-title collapsed">Progression-Free Survival</h2>
+			<ul>
+				<div id="progression-free-graph"></div>
+				<li>
+					Median = <span id="progression-free-median"></span>
+				</li>
+				<li>
+					1-Year Average = <span id="progression-free-1yr"></span>
+				</li>
+				<li>
+					3-Year Average = <span id="progression-free-3yr"></span>
+				</li>
+				<li>
+					5-Year Average = <span id="progression-free-5yr"></span>
+				</li>
+			</ul>
+		</div>
+		<div class="form-category">
+			<h2 class="category-title collapsed">Overall Survival</h2>
+			<ul>
+				<div id="overall-graph"></div>
+				<li>
+					Median = <span id="overall-median"></span>
+				</li>
+				<li>
+					3-Year Average = <span id="overall-3yr"></span>
+				</li>
+				<li>
+					5-Year Average = <span id="overall-5yr"></span>
+				</li>
+			</ul>
 		</div>
 		<div class="form-category">
 			<h2 class="category-title collapsed">Entered Data</h2>
