@@ -8,12 +8,11 @@ import math
 
 with open('filtered_data.pickle', 'rb') as handle:
     data = pickle.load(handle)
-    
     list_patients =[]
     for patient, data in data.items():
         patient_info= []
-        v_status=(data['VitalStatus'])
-        s_time = (data['SurvivalTime'])
+        v_status= data['VitalStatus']
+        s_time= data['SurvivalTime']
         if v_status == 'Alive' or 'Dead':
             
             if v_status == 'Alive':
@@ -32,6 +31,8 @@ with open('filtered_data.pickle', 'rb') as handle:
             list_patients.append(patient_info)
     
     df = pd.DataFrame(list_patients)
+    num_patients = len(df)
+    print(str(num_patients)+ " patients used in analysis")
     
     df.columns = ['Event','Duration']
     kmf = KaplanMeierFitter()
