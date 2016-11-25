@@ -216,4 +216,11 @@ button {
   border: solid #fff;
   border-width: 0 2px 2px 0; }
 
+.percent {
+  padding: 0.25em 0; }
+  .percent h4 {
+    text-align: center;
+    margin: 0;
+    font-size: 3em; }
+
 /*# sourceMappingURL=hipec-index.css.map */

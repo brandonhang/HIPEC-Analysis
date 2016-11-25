@@ -38,36 +38,42 @@
 			<ul>
 				<div id="hospital-histogram" class="graph"></div>
 				<li>
-					Median = <span id="hospital-median"></span>
+					Median = {{ results.HospitalMedian }}
 				</li>
 				<li>
-					IQR = <span id="hospital-iqr"></span> days
+					IQR = {{ results.HospitalIQR }} days
 				</li>
 			</ul>
 		</div>
 		<div class="form-category">
 			<h2 class="category-title collapsed">Discharge Disposition</h2>
-			<ul>
-				<h4 class="percent">
-					<span id="disposition-percent"></span> % Disharged Home
+			<ul class="percent">
+				<h4>
+					{{ results.Disposition }} % Discharged Home
 				</h4>
 			</ul>
 		</div>
 		<div class="form-category">
 			<h2 class="category-title collapsed">Readmission</h2>
-			<ul>
-				<h4 class="percent"><span id="readmission-percent"></span> %</h4>
+			<ul class="percent">
+				<h4>
+					{{ results.Readmission }} %
+				</h4>
 			</ul>
 		</div>
 		<div class="form-category">
 			<h2 class="category-title collapsed">Morbidity (90 days)</h2>
-			<ul>
-				<h4 class="percent"><span id="morbidity-percent"></span> %</h4>
+			<ul class="percent">
+				<h4>
+					{{ results.Morbidity }} %
+				</h4>
 		</div>
 		<div class="form-category">
 			<h2 class="category-title collapsed">Mortality (90 days)</h2>
-			<ul>
-				<h4 class="percent"><span id="mortality-percent"></span> %</h4>
+			<ul class="percent">
+				<h4>
+					{{ results.Mortality }} %
+				</h4>
 			</ul>
 		</div>
 		<div class="form-category">
@@ -75,16 +81,16 @@
 			<ul>
 				<div id="progression-free-graph"></div>
 				<li>
-					Median = <span id="progression-free-median"></span>
+					Median = {{ results.KaplanMeier.Median }}
 				</li>
 				<li>
-					1-Year Average = <span id="progression-free-1yr"></span>
+					1-Year Average = {{ results.KaplanMeier.1Year }}
 				</li>
 				<li>
-					3-Year Average = <span id="progression-free-3yr"></span>
+					3-Year Average = {{ results.KaplanMeier.3Year }}
 				</li>
 				<li>
-					5-Year Average = <span id="progression-free-5yr"></span>
+					5-Year Average = {{ results.KaplanMeier.5Year }}
 				</li>
 			</ul>
 		</div>
@@ -102,17 +108,6 @@
 					5-Year Average = <span id="overall-5yr"></span>
 				</li>
 			</ul>
-		</div>
-		<div class="form-category">
-			<h2 class="category-title collapsed">Entered Data</h2>
-			<div>
-				<strong>Primary Tumor: </strong>{{ results.core_primary_tumor }}<br>
-				<strong>Age: </strong>{{ results.core_age }}<br>
-				<strong>Charlson Co-Morbidity Index: </strong>{{ results.core_charlson }}<br>
-				<strong>Karnofsky's Performance Status: </strong>{{ results.core_karnofsky }}<br>
-				<strong>Peritoneal Carcinomatosis Index: </strong>{{ results.core_peritoneal }}<br>
-				<strong>Completeness of Cytoreduction Score: </strong>{{ results.core_cytoreduction }}
-			</div>
 		</div>
 
 	<a href="/hipec/hipec-app/">New Calculation</a>

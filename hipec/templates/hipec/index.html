@@ -123,6 +123,12 @@
 						<div class="control-indicator"></div>
 					</label>
 				</li>
+				<li>
+					<h3>Number of Previous HIPECS</h3>
+					<input name="core_num_hipecs__upper" type="number" min="0" max="5" slide="true" spread="true"/>
+					<input name="core_num_hipecs__lower" type="number" min="0" max="5" slide="true" spread="true"/>
+					<div class="slider" slide="core_num_hipecs" id="slide_core_num_hipecs"></div>
+				</li>
 			</ul>
 		</div>
 		<div class="form-category">
@@ -257,7 +263,7 @@
 				<li>
 					<h3>Number of Packs/Year</h3>
 					<label class="control control-checkbox">Enabled
-						<input class="optional" type="checkbox" name="enable_dem_bmi" value="1"/>
+						<input class="optional" type="checkbox" name="enable_dem_smoke_pack" value="1"/>
 						<div class="control-indicator"></div>
 					</label>
 					<input name="dem_smoke_pack__upper" type="number" min="0" max="60" slide="true" spread="true"/>

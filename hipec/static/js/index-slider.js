@@ -36,6 +36,15 @@ var coreSliders = [
 		'density': 3
 	},
 	{
+		'name': 'core_num_hipecs',
+		'type': 'continuous',
+		'min': 0,
+		'max': 5,
+		'pips': 6,
+		'steps': 1,
+		'density': 20
+	},
+	{
 		'name': 'dem_bmi',
 		'type': 'continuous',
 		'min': 10,
