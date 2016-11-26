@@ -38,47 +38,44 @@ function buildGraphs(jsonStr) {
 		histogram.draw(histData, options);
 	}
 	
+	// Build the Kaplan Meier curves for progression-free and overall survival
 	function buildKaplanMeier() {
-		var ids = ['progression-free-graph', 'overall-graph'];
+		var data = new google.visualization.DataTable();
 		
-		$.each(ids, function(index, graphID) {
-			var data = new google.visualization.DataTable();
-			
-			data.addColumn('number', 'Months');
-			data.addColumn('number', 'Survival');
-			data.addRows(jasonBourne.KaplanMeier.Coordinates);
-			
-			var options = {
-				hAxis: { title: 'Months' },
-				vAxis: { title: 'Survival' },
-				legend: { position: 'none' },
-				width: screen.width,
-				height: screen.height * 0.6,
-				colors: ['#d9534f']
-			};
-			var chart = new google.visualization.LineChart(
-				document.getElementById(graphID));
-			
-			chart.draw(data, options);
-		});
-	}
-	
-	function makeRandomStats(numStats, mode) {
-		fakeStats = [];
+		data.addColumn('number', 'Months');
+		data.addColumn('number', 'Survival');
+		data.addRows(jasonBourne.OverallSurvival.Coordinates);
 		
-		if (mode == 0) {
-			for (var i = 0; i < numStats; i++) {
-				fakeStats.push(Math.floor(Math.random() * 50) + 1);
-			}
-		}
-		else {
-			for (var i = 0; i < numStats; i++) {
-				fakeStats.push(Math.round((Math.random() * 50) * 100) / 100);
-			}
-		}
+		var options = {
+			hAxis: { title: 'Months' },
+			vAxis: { title: 'Survival' },
+			legend: { position: 'none' },
+			width: screen.width,
+			height: screen.height * 0.6,
+			colors: ['#d9534f']
+		};
+		var chart = new google.visualization.LineChart(
+			document.getElementById('overall-graph'));
 		
-		fakeStats.sort(function(a, b) { return a - b; });
+		chart.draw(data, options);
 		
-		return fakeStats;
+		data = new google.visualization.DataTable();
+		
+		data.addColumn('number', 'Months');
+		data.addColumn('number', 'Survival');
+		data.addRows(jasonBourne.ProgressionFree.Coordinates);
+		
+		options = {
+			hAxis: { title: 'Months' },
+			vAxis: { title: 'Survival' },
+			legend: { position: 'none' },
+			width: screen.width,
+			height: screen.height * 0.6,
+			colors: ['#d9534f']
+		};
+		chart = new google.visualization.LineChart(
+			document.getElementById('progression-free-graph'));
+		
+		chart.draw(data, options);
 	}
 }

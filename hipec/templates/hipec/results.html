@@ -81,16 +81,16 @@
 			<ul>
 				<div id="progression-free-graph"></div>
 				<li>
-					Median = {{ results.KaplanMeier.Median }}
+					Median = {{ results.ProgressionFree.Median }}
 				</li>
 				<li>
-					1-Year Average = {{ results.KaplanMeier.1Year }}
+					1-Year Average = {{ results.ProgressionFree.1Year }}
 				</li>
 				<li>
-					3-Year Average = {{ results.KaplanMeier.3Year }}
+					3-Year Average = {{ results.ProgressionFree.3Year }}
 				</li>
 				<li>
-					5-Year Average = {{ results.KaplanMeier.5Year }}
+					5-Year Average = {{ results.ProgressionFree.5Year }}
 				</li>
 			</ul>
 		</div>
@@ -99,13 +99,13 @@
 			<ul>
 				<div id="overall-graph"></div>
 				<li>
-					Median = <span id="overall-median"></span>
+					Median = {{ results.OverallSurvival.Median }}
 				</li>
 				<li>
-					3-Year Average = <span id="overall-3yr"></span>
+					3-Year Average = {{ results.OverallSurvival.3Year }}
 				</li>
 				<li>
-					5-Year Average = <span id="overall-5yr"></span>
+					5-Year Average = {{ results.OverallSurvival.5Year }}
 				</li>
 			</ul>
 		</div>

@@ -18,6 +18,22 @@ class HipecVariables(forms.Form):
 	core_peritoneal__upper = forms.IntegerField()
 	core_peritoneal__lower = forms.IntegerField()
 	core_cytoreduction = forms.IntegerField()
+	
+	# Demographics
+	dem_gender = forms.CharField(max_length=8, required=False)
+	dem_race = forms.CharField(max_length=32, required=False)
+	enable_dem_bmi = forms.IntegerField(required=False)
+	dem_bmi__upper = forms.IntegerField(required=False)
+	dem_bmi__lower = forms.IntegerField(required=False)
+	dem_asa = forms.IntegerField(required=False)
+	dem_depression = forms.CharField(max_length=4, required=False)
+	dem_beta_block = forms.CharField(max_length=4, required=False)
+	dem_antidepr = forms.CharField(max_length=4, required=False)
+	dem_smoker = forms.CharField(max_length=4, required=False)
+	dem_smoke_status = forms.CharField(max_length=16, required=False)
+	enable_dem_smoke_pack = forms.IntegerField(required=False)
+	dem_smoke_pack__upper = forms.IntegerField(required=False)
+	dem_smoke_pack__lower = forms.IntegerField(required=False)
 
 def hipec_app(request):
 	if request.method == 'POST':

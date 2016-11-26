@@ -397,8 +397,8 @@ class SurvivalAnalysis(models.Model):
 			return filtered
 		''' End filter_patient_data() '''
 		
-		''' Build survival analysis statistics '''
-		def survival_analysis(data):
+		''' Build overall survival analysis statistics '''
+		def overall_survival_analysis(data):
 			list_patients =[]
 			for patient, data in data.items():
 				patient_info= []
@@ -453,15 +453,83 @@ class SurvivalAnalysis(models.Model):
 			year_3_surv = '%.2f' % round(surv_for_3 * 100, 2)
 			year_5_surv = '%.2f' % round(surv_for_5 * 100, 2)
 			
-			kp_stats = {}
-			kp_stats['Coordinates'] = coordinates
-			kp_stats['Median'] = surv_median
-			kp_stats['1Year'] = year_1_surv
-			kp_stats['3Year'] = year_3_surv
-			kp_stats['5Year'] = year_5_surv
+			overall_surv_stats = {}
+			overall_surv_stats['Coordinates'] = coordinates
+			overall_surv_stats['Median'] = surv_median
+			overall_surv_stats['1Year'] = year_1_surv
+			overall_surv_stats['3Year'] = year_3_surv
+			overall_surv_stats['5Year'] = year_5_surv
 			
-			return kp_stats
-		''' End survival_analysis() '''
+			return overall_surv_stats
+		''' End overall_survival_analysis() '''
+		
+		''' Build progression free survival statistics '''
+		def progression_free_analysis(data):
+			list_patients =[] 
+			for patient, data in data.items():
+				v_status = data['VitalStatus']
+				d_progression = data['DiseaseProgression']
+				
+				s_time = data['SurvivalTime']
+				
+				patient_info = []
+				
+				if d_progression !=None:
+					if v_status !=None:
+						if v_status == 'Alive' or d_progression == 'False':
+							#patient disease did not progress 
+							progression_status = 0
+						else:
+							progression_status = 1
+							#patient disease did progress 
+						patient_info.append(progression_status)
+
+						if type(s_time) !=str:
+							patient_info.append(s_time)
+						list_patients.append(patient_info)
+			df = pd.DataFrame(list_patients)
+			num_patients = len(df)
+			
+			df.columns= ['Event', 'Duration']
+			kmf = KaplanMeierFitter()
+			kmf.fit(durations=df.Duration, event_observed=df.Event)
+			
+			coordinates =[]
+			survival_fx = kmf.survival_function_
+			
+			coordinates_y = list(survival_fx.values.flatten())
+			coordinates_x=[]
+			
+			for row in survival_fx.iterrows():
+				timeline,km_estimate=row
+				coordinates_x.append(timeline.tolist())
+				
+			for(x,y) in zip(coordinates_x,coordinates_y):
+				coordinates.append([x,y])
+			
+			#calculate the progression free survival probability for t=1 year
+			surv_for_1 = kmf.predict(12)
+			
+			#calculate the progression free survival probability for t=3 years
+			surv_for_3 = kmf.predict(36)
+			
+			#calculate the progression free survival probability for t=5 years
+			surv_for_5 = kmf.predict(60)
+			
+			surv_median = '%.2f' % round(kmf.median_, 2)
+			year_1_surv = '%.2f' % round(surv_for_1 * 100, 2)
+			year_3_surv = '%.2f' % round(surv_for_3 * 100, 2)
+			year_5_surv = '%.2f' % round(surv_for_5 * 100, 2)
+			
+			prog_free_stats = {}
+			prog_free_stats['Coordinates'] = coordinates
+			prog_free_stats['Median'] = surv_median
+			prog_free_stats['1Year'] = year_1_surv
+			prog_free_stats['3Year'] = year_3_surv
+			prog_free_stats['5Year'] = year_5_surv
+			
+			return prog_free_stats
+		''' End progression_free_analysis() '''
 		
 		# Setup the Python pickle object file
 		modded = int(os.path.getmtime('hipec\\data\\HIPEC_data.xlsx'))
@@ -486,9 +554,10 @@ class SurvivalAnalysis(models.Model):
 			return captured_data
 		
 		basic_stats = getStats(filtered_data)
-		survival_stats = survival_analysis(filtered_data)
+		overall_survival = overall_survival_analysis(filtered_data)
+		progression_free = progression_free_analysis(filtered_data)
 		
-		# A lot of the values below are used more for testing proof-of-concept
+		# Filtering and processing of data
 		today = datetime.date.today()
 		hospital = get_all_hipec_data_of('HospitalStay', filtered_data)
 		disposition = get_all_hipec_data_of('Disposition', filtered_data)
@@ -507,7 +576,8 @@ class SurvivalAnalysis(models.Model):
 		captured_data.update(
 			{'HospitalMedian': basic_stats['HospitalStay']['median']}
 		)
-		captured_data.update({'KaplanMeier': survival_stats})
+		captured_data.update({'OverallSurvival': overall_survival})
+		captured_data.update({'ProgressionFree': progression_free})
 		captured_data.update({'Disposition': disposition})
 		captured_data.update({'Readmission': readmission})
 		captured_data.update({'Morbidity': morbidity})
