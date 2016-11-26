@@ -6,14 +6,14 @@ from lifelines.estimation import KaplanMeierFitter
 import math
 
 
-with open('filtered_data.pickle', 'rb') as handle:
+with open('disease-prog.pickle', 'rb') as handle:
     data = pickle.load(handle)
     list_patients =[]
     for patient, data in data.items():
         patient_info= []
         v_status= data['VitalStatus']
         s_time= data['SurvivalTime']
-        if v_status == 'Alive' or 'Dead':
+        if v_status !=None:
             
             if v_status == 'Alive':
                 v_status = 0
@@ -72,7 +72,7 @@ with open('filtered_data.pickle', 'rb') as handle:
 
     #calculate the survival probability for t=5
     surv_for_5=kmf.predict(60)
-    print("probability of surval for 5 years: "+str(surv_for_5))
+    print("probability of survival for 5 years: "+str(surv_for_5))
 
 
    
