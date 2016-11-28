@@ -68,10 +68,7 @@ var coreSliders = [
 	$.each(coreSliders, function(index, slideInfo) {
 		// noUiSlider.js prep work
 		var lower, mid, upper, range;
-		// var density = Math.floor(10 - ((slideInfo.max - slideInfo.min) / slideInfo.pips));
-		// console.log(slideInfo.name, density);
-		// density = Math.round((slideInfo.max - slideInfo.min) / (slideInfo.pips - 1));
-		// console.log(slideInfo.name, density);
+		
 		if (slideInfo.type == 'continuous') {
 			lower = Math.round((slideInfo.min + slideInfo.max) * (1 / 3));
 			upper = Math.round((slideInfo.min + slideInfo.max) * (2 / 3));
@@ -136,10 +133,4 @@ var coreSliders = [
 		var slider = document.getElementById('slide_' + name);
 		slider.noUiSlider.set(value);
 	});
-	/*
-	$('#prediction-form').on('submit', function(event) {
-		if ()
-			event.preventDefault();
-		}
-	})*/
 })(jQuery);

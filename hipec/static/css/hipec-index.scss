@@ -104,13 +104,13 @@ h1 {
 	
 	input[type=submit] {
 		font-family: #{$alegreya};
-		font-size: 1.7em;
+		font-size: 1.3em;
 		font-weight: bold;
 		border: 3px solid black;
-		@include border-radius(3vw);
+		@include border-radius(2.5vw);
 		padding: 0.35em;
-		display: block;
-		margin: 0 auto;
+		display:block;
+		margin: 1em auto;
 		width: 50%;
 		background-color: #bbf1e3;
 		
@@ -289,5 +289,38 @@ button {
 		text-align: center;
 		margin: 0;
 		font-size: 3em;
+	}
+}
+
+.results-nav {
+	text-align: center;
+	margin: 1em auto;
+}
+
+.results-button {
+	font-family: #{$alegreya};
+	font-size: 1.3em;
+	font-weight: bold;
+	border: 3px solid black;
+	@include border-radius(2.5vw);
+	padding: 0.35em;
+	margin: 0 1em;
+	width: 35%;
+	color: white;
+	
+	&:first-of-type {
+		background-color: #d9534f;
+		
+		&:focus, &:hover {
+			background-color: #d60009;
+		}
+	}
+	
+	&:last-of-type {
+		background-color: #428bca;
+		
+		&:focus, &:hover {
+			background-color: #0045d6;
+		}
 	}
 }

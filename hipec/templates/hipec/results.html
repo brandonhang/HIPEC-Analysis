@@ -19,16 +19,17 @@
 						{% if results.registry_dob is None %}
 							--
 						{% else %}
-							{% if results.registry_dob.month < 10 %}{{ 0 }}{% endif %}{{ results.registry_dob.month }}/
-							{% if results.registry_dob.day < 10 %}{{ 0 }}{% endif %}{{ results.registry_dob.day }}/
-							{{ results.registry_dob.year }}
+							<!-- Comment lines are to prevent insertion of spaces between dates -->
+							{% if results.registry_dob.month < 10 %}{{ 0 }}{% endif %}{{ results.registry_dob.month }}/<!--
+							-->{% if results.registry_dob.day < 10 %}{{ 0 }}{% endif %}{{ results.registry_dob.day }}/<!--
+							-->{{ results.registry_dob.year }}
 						{% endif %}
 					</td>
 					<td>
 						Date of Visit: 
-						{% if results.today.month < 10 %}{{ 0 }}{% endif %}{{ results.today.month }}/
-						{% if results.today.day < 10 %}{{ 0 }}{% endif %}{{ results.today.day }}/
-						{{ results.today.year }}
+						{% if results.today.month < 10 %}{{ 0 }}{% endif %}{{ results.today.month }}/<!--
+						-->{% if results.today.day < 10 %}{{ 0 }}{% endif %}{{ results.today.day }}/<!--
+						-->{{ results.today.year }}
 					</td>
 				</tr>
 			</table>
@@ -38,7 +39,7 @@
 			<ul>
 				<div id="hospital-histogram" class="graph"></div>
 				<li>
-					Median = {{ results.HospitalMedian }}
+					Median = {{ results.HospitalMedian }} days
 				</li>
 				<li>
 					IQR = {{ results.HospitalIQR }} days
@@ -79,39 +80,46 @@
 		<div class="form-category">
 			<h2 class="category-title collapsed">Progression-Free Survival</h2>
 			<ul>
-				<div id="progression-free-graph"></div>
+				<div id="progression-free-graph" class="graph"></div>
 				<li>
-					Median = {{ results.ProgressionFree.Median }}
+					Median = {{ results.ProgressionFree.Median }} Months
 				</li>
 				<li>
-					1-Year Average = {{ results.ProgressionFree.1Year }}
+					1-Year Average = {{ results.ProgressionFree.1Year }} Months
 				</li>
 				<li>
-					3-Year Average = {{ results.ProgressionFree.3Year }}
+					3-Year Average = {{ results.ProgressionFree.3Year }} Months
 				</li>
 				<li>
-					5-Year Average = {{ results.ProgressionFree.5Year }}
+					5-Year Average = {{ results.ProgressionFree.5Year }} Months
 				</li>
 			</ul>
 		</div>
 		<div class="form-category">
 			<h2 class="category-title collapsed">Overall Survival</h2>
 			<ul>
-				<div id="overall-graph"></div>
+				<div id="overall-graph" class="graph"></div>
 				<li>
-					Median = {{ results.OverallSurvival.Median }}
+					Median = {{ results.OverallSurvival.Median }} Months
 				</li>
 				<li>
-					3-Year Average = {{ results.OverallSurvival.3Year }}
+					3-Year Average = {{ results.OverallSurvival.3Year }} Months
 				</li>
 				<li>
-					5-Year Average = {{ results.OverallSurvival.5Year }}
+					5-Year Average = {{ results.OverallSurvival.5Year }} Months
 				</li>
 			</ul>
 		</div>
-
-	<a href="/hipec/hipec-app/">New Calculation</a>
-	<a href="#" onclick="window.history.go(-1); return false;">Adjust Calculation</a>
+	<div class="results-nav">
+		<button class="results-button" onclick="location.href = '/hipec/hipec-app/'">
+			New Calculation
+		</button>
+		{% load static %}
+		<button class="results-button" onclick="printResults()">
+			<img src="{% static 'img/icons/printer.svg' %}"/>
+			&nbsp;Print Results
+		</button>
+	</div>
 {% endblock %}
 
 {% block scripts %}
@@ -122,4 +130,5 @@
 	<script id="grapher">
 		buildGraphs("{{ results }}");
 	</script>
+	<script type="text/javascript" src="{% static 'js/print-results.js' %}"></script>
 {% endblock %}

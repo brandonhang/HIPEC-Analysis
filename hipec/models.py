@@ -276,8 +276,8 @@ class SurvivalAnalysis(models.Model):
 				return percent
 		''' End home_disposition() '''
 		
-		''' Test function to return readmission, morbidity, and mortality '''
-		def percent_true(data_list):
+		''' Function to calculate readmission rate '''
+		def calc_readmit(data_list):
 			true = 0
 			total = 0
 			
@@ -293,7 +293,41 @@ class SurvivalAnalysis(models.Model):
 				percent = true / float(total)
 				percent = '%.2f' % round(percent * 100, 2)
 				return percent
-		''' End percent_true() '''
+		''' End calc_readmit() '''
+		
+		''' Function to calculate morbidity and mortality '''
+		def calc_morb_mort(mode, data):
+			# Morbidity calculation
+			if mode:
+				mor30 = get_all_hipec_data_of('Morbidity30', data)
+				mor60 = get_all_hipec_data_of('Morbidity60', data)
+				mor90 = get_all_hipec_data_of('Morbidity90', data)
+			# Mortality calculation
+			else:
+				mor30 = get_all_hipec_data_of('Mortality30', data)
+				mor60 = get_all_hipec_data_of('Mortality60', data)
+				mor90 = get_all_hipec_data_of('Mortality90', data)
+			
+			true = 0
+			total = 0
+			
+			for index, value in enumerate(mor30):
+				if mor30[index] == True:
+					true += 1
+				elif mor60[index] == True:
+					true += 1
+				elif mor90[index] == True:
+					true += 1
+				
+				total += 1
+			
+			if total == 0:
+				return 0
+			else:
+				percent = true / float(total)
+				percent = '%.2f' % round(percent * 100, 2)
+				return percent
+		''' End calc_morb_mort() '''
 		
 		''' Parses filtered data and calculates basic statistics '''
 		def getStats(dataset):
@@ -563,13 +597,12 @@ class SurvivalAnalysis(models.Model):
 		disposition = get_all_hipec_data_of('Disposition', filtered_data)
 		disposition = home_disposition(disposition)
 		readmission = get_all_hipec_data_of('Readmission', filtered_data)
-		readmission = percent_true(readmission)
-		morbidity = get_all_hipec_data_of('Morbidity90', filtered_data)
-		morbidity = percent_true(morbidity)
-		mortality = get_all_hipec_data_of('Mortality90', filtered_data)
-		mortality = percent_true(mortality)
+		readmission = calc_readmit(readmission)
+		morbidity = calc_morb_mort(True, filtered_data)
+		mortality = calc_morb_mort(False, filtered_data)
 		hospital_iqr = basic_stats['HospitalStay']['Q3'] - basic_stats['HospitalStay']['Q1']
 		
+		# Add processed data to dictionary to return
 		captured_data.update({'today': today})
 		captured_data.update({'HospitalHistogram': hospital})
 		captured_data.update({'HospitalIQR': hospital_iqr})

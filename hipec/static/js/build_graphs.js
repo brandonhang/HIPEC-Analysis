@@ -1,3 +1,7 @@
+var histData, kapMeiData1, kapMeiData2;
+
+// Build the histogram and Kaplan-Meier curves; takes the Python object string
+// as a parameter.
 function buildGraphs(jsonStr) {
 	// Remove the ugly JSON string from the clientside HTML
 	$('#grapher').remove();
@@ -16,20 +20,17 @@ function buildGraphs(jsonStr) {
 	google.charts.setOnLoadCallback(buildHospitalHistogram);
 	google.charts.setOnLoadCallback(buildKaplanMeier);
 	
+	// Build the histogram for hospital stay length
 	function buildHospitalHistogram() {
-		// To build a histogram, Google Charts wants every value to be assigned
-		// to a label, something completely and utterly unncessary for a
-		// histogram.  As a result, a simple array of values must be converted
-		// into an array of arrays.
-		var googleDesignFlaw = [['Value']];
+		var chartData = [['Value']];
 		$.each(jasonBourne.HospitalHistogram, function(index, value) {
-			googleDesignFlaw.push([value]);
+			chartData.push([value]);
 		});
-		var histData = new google.visualization.arrayToDataTable(googleDesignFlaw);
+		histData = new google.visualization.arrayToDataTable(chartData);
 		var options = {
 			legend: { position: 'none' },
-			width: screen.width,
-			height: screen.height * 0.6,
+			width: $(window).width() * 0.8,
+			height: $(window).width() * 0.45,
 			colors: ['#d9534f']
 		};
 		var histogram = new google.visualization.Histogram(
@@ -40,42 +41,68 @@ function buildGraphs(jsonStr) {
 	
 	// Build the Kaplan Meier curves for progression-free and overall survival
 	function buildKaplanMeier() {
-		var data = new google.visualization.DataTable();
-		
-		data.addColumn('number', 'Months');
-		data.addColumn('number', 'Survival');
-		data.addRows(jasonBourne.OverallSurvival.Coordinates);
+		kapMeiData1 = new google.visualization.DataTable();
+		kapMeiData1.addColumn('number', 'Months');
+		kapMeiData1.addColumn('number', 'Survival');
+		kapMeiData1.addRows(jasonBourne.OverallSurvival.Coordinates);
 		
 		var options = {
 			hAxis: { title: 'Months' },
 			vAxis: { title: 'Survival' },
 			legend: { position: 'none' },
-			width: screen.width,
-			height: screen.height * 0.6,
+			width: $(window).width() * 0.8,
+			height: $(window).width() * 0.45,
 			colors: ['#d9534f']
 		};
 		var chart = new google.visualization.LineChart(
-			document.getElementById('overall-graph'));
+			document.getElementById('overall-graph')
+		);
 		
-		chart.draw(data, options);
+		chart.draw(kapMeiData1, options);
 		
-		data = new google.visualization.DataTable();
+		kapMeiData2 = new google.visualization.DataTable();
+		kapMeiData2.addColumn('number', 'Months');
+		kapMeiData2.addColumn('number', 'Survival');
+		kapMeiData2.addRows(jasonBourne.ProgressionFree.Coordinates);
 		
-		data.addColumn('number', 'Months');
-		data.addColumn('number', 'Survival');
-		data.addRows(jasonBourne.ProgressionFree.Coordinates);
-		
-		options = {
-			hAxis: { title: 'Months' },
-			vAxis: { title: 'Survival' },
-			legend: { position: 'none' },
-			width: screen.width,
-			height: screen.height * 0.6,
-			colors: ['#d9534f']
-		};
 		chart = new google.visualization.LineChart(
-			document.getElementById('progression-free-graph'));
+			document.getElementById('progression-free-graph')
+		);
 		
-		chart.draw(data, options);
+		chart.draw(kapMeiData2, options);
 	}
+}
+
+// Resizes the graphs--mod1 is a decimal modifier for the graph widths, mod2
+// for the graph heights.
+function resizeGraphs(mod1, mod2) {
+	
+	var histOptions = {
+		legend: { position: 'none' },
+		width: $(window).width() * mod1,
+		height: $(window).width() * mod2,
+		colors: ['#d9534f']
+	};
+	var lineOptions = {
+		hAxis: { title: 'Months' },
+		vAxis: { title: 'Survival' },
+		legend: { position: 'none' },
+		width: $(window).width() * mod1,
+		height: $(window).width() * mod2,
+		colors: ['#d9534f']
+	};
+	var histogram = new google.visualization.Histogram(
+		document.getElementById('hospital-histogram')
+	);
+	var kapMei1 = new google.visualization.LineChart(
+		document.getElementById('overall-graph')
+	);
+	var kapMei2 = new google.visualization.LineChart(
+		document.getElementById('progression-free-graph')
+	);
+	
+	// Redraw all graphs with the new size modifiers
+	histogram.draw(histData, histOptions);
+	kapMei1.draw(kapMeiData1, lineOptions);
+	kapMei2.draw(kapMeiData2, lineOptions);
 }

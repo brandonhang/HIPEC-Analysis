@@ -75,15 +75,15 @@ h1 {
         width: 33%; }
   #prediction-form input[type=submit], #results input[type=submit] {
     font-family: 'Alegreya Sans SC', 'Verdana', sans-serif;
-    font-size: 1.7em;
+    font-size: 1.3em;
     font-weight: bold;
     border: 3px solid black;
-    -webkit-border-radius: 3vw;
-    -moz-border-radius: 3vw;
-    border-radius: 3vw;
+    -webkit-border-radius: 2.5vw;
+    -moz-border-radius: 2.5vw;
+    border-radius: 2.5vw;
     padding: 0.35em;
     display: block;
-    margin: 0 auto;
+    margin: 1em auto;
     width: 50%;
     background-color: #bbf1e3; }
     #prediction-form input[type=submit]:active, #results input[type=submit]:active {
@@ -222,5 +222,30 @@ button {
     text-align: center;
     margin: 0;
     font-size: 3em; }
+
+.results-nav {
+  text-align: center;
+  margin: 1em auto; }
+
+.results-button {
+  font-family: 'Alegreya Sans SC', 'Verdana', sans-serif;
+  font-size: 1.3em;
+  font-weight: bold;
+  border: 3px solid black;
+  -webkit-border-radius: 2.5vw;
+  -moz-border-radius: 2.5vw;
+  border-radius: 2.5vw;
+  padding: 0.35em;
+  margin: 0 1em;
+  width: 35%;
+  color: white; }
+  .results-button:first-of-type {
+    background-color: #d9534f; }
+    .results-button:first-of-type:focus, .results-button:first-of-type:hover {
+      background-color: #d60009; }
+  .results-button:last-of-type {
+    background-color: #428bca; }
+    .results-button:last-of-type:focus, .results-button:last-of-type:hover {
+      background-color: #0045d6; }
 
 /*# sourceMappingURL=hipec-index.css.map */
