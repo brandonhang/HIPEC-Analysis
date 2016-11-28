@@ -20,7 +20,8 @@ function printResults() {
 			+ "}"
 			
 			+ "h2.category-title {"
-				+ "font-family: 'Verdana', sans-serif"
+				+ "font-family: 'Verdana', sans-serif;"
+				+ "margin: 0.5em 0;"
 			+ "}"
 			
 			+ "ul.percent h4 {"
