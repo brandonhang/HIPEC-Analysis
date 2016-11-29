@@ -19,58 +19,117 @@
 						{% if results.registry_dob is None %}
 							--
 						{% else %}
-							{% if results.today.month < 10 %}{{ 0 }}{% endif %}{{ results.registry_dob.month }}/
-							{% if results.today.day < 10 %}{{ 0 }}{% endif %}{{ results.registry_dob.day }}/
-							{{ results.registry_dob.year }}
+							<!-- Comment lines are to prevent insertion of spaces between dates -->
+							{% if results.registry_dob.month < 10 %}{{ 0 }}{% endif %}{{ results.registry_dob.month }}/<!--
+							-->{% if results.registry_dob.day < 10 %}{{ 0 }}{% endif %}{{ results.registry_dob.day }}/<!--
+							-->{{ results.registry_dob.year }}
 						{% endif %}
 					</td>
 					<td>
 						Date of Visit: 
-						{% if results.today.month < 10 %}{{ 0 }}{% endif %}{{ results.today.month }}/
-						{% if results.today.day < 10 %}{{ 0 }}{% endif %}{{ results.today.day }}/
-						{{ results.today.year }}
+						{% if results.today.month < 10 %}{{ 0 }}{% endif %}{{ results.today.month }}/<!--
+						-->{% if results.today.day < 10 %}{{ 0 }}{% endif %}{{ results.today.day }}/<!--
+						-->{{ results.today.year }}
 					</td>
 				</tr>
 			</table>
 		</div>
 		<div class="form-category">
 			<h2 class="category-title collapsed">Length of Stay</h2>
+			<ul>
+				<div id="hospital-histogram" class="graph"></div>
+				<li>
+					Median = {{ results.HospitalMedian }} days
+				</li>
+				<li>
+					IQR = {{ results.HospitalIQR }} days
+				</li>
+			</ul>
 		</div>
 		<div class="form-category">
 			<h2 class="category-title collapsed">Discharge Disposition</h2>
+			<ul class="percent">
+				<h4>
+					{{ results.Disposition }}%<br>
+					Discharged Home
+				</h4>
+			</ul>
 		</div>
 		<div class="form-category">
 			<h2 class="category-title collapsed">Readmission</h2>
+			<ul class="percent">
+				<h4>
+					{{ results.Readmission }}%
+				</h4>
+			</ul>
 		</div>
 		<div class="form-category">
 			<h2 class="category-title collapsed">Morbidity (90 days)</h2>
+			<ul class="percent">
+				<h4>
+					{{ results.Morbidity }}%
+				</h4>
 		</div>
 		<div class="form-category">
 			<h2 class="category-title collapsed">Mortality (90 days)</h2>
-		</div>
-		<div class="form-category">
-			<h2 class="category-title collapsed">Overall Survival</h2>
+			<ul class="percent">
+				<h4>
+					{{ results.Mortality }}%
+				</h4>
+			</ul>
 		</div>
 		<div class="form-category">
 			<h2 class="category-title collapsed">Progression-Free Survival</h2>
+			<ul>
+				<div id="progression-free-graph" class="graph"></div>
+				<li>
+					Median = {{ results.ProgressionFree.Median }} Months
+				</li>
+				<li>
+					1-Year Average = {{ results.ProgressionFree.1Year }} Months
+				</li>
+				<li>
+					3-Year Average = {{ results.ProgressionFree.3Year }} Months
+				</li>
+				<li>
+					5-Year Average = {{ results.ProgressionFree.5Year }} Months
+				</li>
+			</ul>
 		</div>
 		<div class="form-category">
-			<h2 class="category-title collapsed">Entered Data</h2>
-			<div>
-				<strong>Primary Tumor: </strong>{{ results.core_primary_tumor }}<br>
-				<strong>Age: </strong>{{ results.core_age }}<br>
-				<strong>Charlson Co-Morbidity Index: </strong>{{ results.core_charlson }}<br>
-				<strong>Karnofsky's Performance Status: </strong>{{ results.core_karnofsky }}<br>
-				<strong>Peritoneal Carcinomatosis Index: </strong>{{ results.core_peritoneal }}<br>
-				<strong>Completeness of Cytoreduction Score: </strong>{{ results.core_cytoreduction }}
-			</div>
+			<h2 class="category-title collapsed">Overall Survival</h2>
+			<ul>
+				<div id="overall-graph" class="graph"></div>
+				<li>
+					Median = {{ results.OverallSurvival.Median }} Months
+				</li>
+				<li>
+					3-Year Average = {{ results.OverallSurvival.3Year }} Months
+				</li>
+				<li>
+					5-Year Average = {{ results.OverallSurvival.5Year }} Months
+				</li>
+			</ul>
 		</div>
-
-	<a href="/hipec/hipec-app/">New Calculation</a>
-	<a href="#" onclick="window.history.go(-1); return false;">Adjust Calculation</a>
+	<div class="results-nav">
+		<button class="results-button" onclick="location.href = '/hipec/hipec-app/'">
+			New Calculation
+		</button>
+		{% load static %}
+		<button class="results-button" onclick="printResults()">
+			<img src="{% static 'img/icons/printer.svg' %}"/>
+			&nbsp;Print Results
+		</button>
+	</div>
 {% endblock %}
 
 {% block scripts %}
 	{% load static %}
+	<script type="text/javascript" src="{% static 'js/g-charts.js' %}"></script>
 	<script type="text/javascript" src="{% static 'js/hipec-results.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/build_graphs.js' %}"></script>
+	<script id="grapher">
+		buildGraphs("{{ results }}");
+	</script>
+	<script type="text/javascript" src="{% static 'js/print-results.js' %}"></script>
 {% endblock %}

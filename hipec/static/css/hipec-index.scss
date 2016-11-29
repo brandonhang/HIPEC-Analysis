@@ -104,18 +104,29 @@ h1 {
 	
 	input[type=submit] {
 		font-family: #{$alegreya};
-		font-size: 1.7em;
+		font-size: 1.3em;
 		font-weight: bold;
 		border: 3px solid black;
-		@include border-radius(3vw);
+		@include border-radius(2.5vw);
 		padding: 0.35em;
-		display: block;
-		margin: 0 auto;
+		display:block;
+		margin: 1em auto;
 		width: 50%;
 		background-color: #bbf1e3;
 		
 		&:active {
 			background-color: #42f076;
+		}
+	}
+}
+
+.column-group {
+	.column {
+		width: 47%;
+		display: inline-block;
+		
+		label {
+			display: block !important;
 		}
 	}
 }
@@ -201,4 +212,115 @@ button {
 	color: white;
 	z-index: 9001;
 	display: none;
+}
+
+.control {
+	font-size: 1em;
+	position: relative;
+	display: block;
+	padding-left: 1.25em;
+	cursor: pointer;
+	
+	input {
+		position: absolute;
+		z-index: -1;
+		opacity: 0;
+		
+		&:checked {
+			~ .control-indicator {
+				background: #2aa1c0;
+				
+				&::after {
+					display: block;
+				}
+			}
+		}
+	}
+}
+
+.control-indicator {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 1em;
+	height: 1em;
+	background: #e6e6e6;
+	
+	&::after {
+		position: absolute;
+		display: none;
+		content: '';
+	}
+}
+
+.control-radio {
+	.control-indicator {
+		@include border-radius(50%);
+		
+		&::after {
+			top: 0.25em;
+			left: 0.25em;
+			width: 0.5em;
+			height: 0.5em;
+			@include border-radius(50%);
+			background: #fff;
+		}
+	}
+}
+
+.control-checkbox {
+	.control-indicator {
+		&::after {
+			top: 0.15em;
+			left: 0.35em;
+			width: 0.2em;
+			height: 0.5em;
+			@include rotate(45deg);
+			border: solid #fff;
+			border-width: 0 2px 2px 0;
+		}
+	}
+}
+
+.percent {
+	padding: 0.25em 0;
+	
+	h4 {
+		text-align: center;
+		margin: 0;
+		font-size: 3em;
+	}
+}
+
+.results-nav {
+	text-align: center;
+	margin: 1em auto;
+}
+
+.results-button {
+	font-family: #{$alegreya};
+	font-size: 1.3em;
+	font-weight: bold;
+	border: 3px solid black;
+	@include border-radius(2.5vw);
+	padding: 0.35em;
+	margin: 0 1em;
+	width: 35%;
+	color: white;
+	
+	&:first-of-type {
+		background-color: #d9534f;
+		
+		&:focus, &:hover {
+			background-color: #d60009;
+		}
+	}
+	
+	&:last-of-type {
+		background-color: #428bca;
+		
+		&:focus, &:hover {
+			background-color: #0045d6;
+		}
+	}
 }

@@ -34,6 +34,33 @@ var coreSliders = [
 		'pips': 14,
 		'steps': 1,
 		'density': 3
+	},
+	{
+		'name': 'core_num_hipecs',
+		'type': 'continuous',
+		'min': 0,
+		'max': 5,
+		'pips': 6,
+		'steps': 1,
+		'density': 20
+	},
+	{
+		'name': 'dem_bmi',
+		'type': 'continuous',
+		'min': 10,
+		'max': 70,
+		'pips': 11,
+		'steps': 1,
+		'density': 3
+	},
+	{
+		'name': 'dem_smoke_pack',
+		'type': 'continuous',
+		'min': 0,
+		'max': 60,
+		'pips': 11,
+		'steps': 1,
+		'density': 3
 	}
 ];
 
@@ -41,10 +68,7 @@ var coreSliders = [
 	$.each(coreSliders, function(index, slideInfo) {
 		// noUiSlider.js prep work
 		var lower, mid, upper, range;
-		// var density = Math.floor(10 - ((slideInfo.max - slideInfo.min) / slideInfo.pips));
-		// console.log(slideInfo.name, density);
-		// density = Math.round((slideInfo.max - slideInfo.min) / (slideInfo.pips - 1));
-		// console.log(slideInfo.name, density);
+		
 		if (slideInfo.type == 'continuous') {
 			lower = Math.round((slideInfo.min + slideInfo.max) * (1 / 3));
 			upper = Math.round((slideInfo.min + slideInfo.max) * (2 / 3));
@@ -109,10 +133,4 @@ var coreSliders = [
 		var slider = document.getElementById('slide_' + name);
 		slider.noUiSlider.set(value);
 	});
-	/*
-	$('#prediction-form').on('submit', function(event) {
-		if ()
-			event.preventDefault();
-		}
-	})*/
 })(jQuery);
