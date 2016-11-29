@@ -20,6 +20,10 @@ function buildGraphs(jsonStr) {
 	google.charts.setOnLoadCallback(buildHospitalHistogram);
 	google.charts.setOnLoadCallback(buildKaplanMeier);
 	
+	window.addEventListener('resize', function() {
+		resizeGraphs(0.8, 0.45);
+	}, false);
+	
 	// Build the histogram for hospital stay length
 	function buildHospitalHistogram() {
 		var chartData = [['Value']];
