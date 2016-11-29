@@ -3,13 +3,27 @@
 {% block form %}
 	<div id="results">
 		<div class="form-category">
-			<table>
+			<table class="registry">
 				<tr>
-					<td>Name: John Doe</td>
-					<td>Primary Site: {{ results.primary_tumor }}</td>
+					<td>Name: 
+						{% if results.registry_name == '' %}
+							--
+						{% else %}
+							{{ results.registry_name}}
+						{% endif %}
+					</td>
+					<td>Primary Site: {{ results.core_primary_tumor }}</td>
 				</tr>
 				<tr>
-					<td>DOB: 05/28/1971</td>
+					<td>DOB: 
+						{% if results.registry_dob is None %}
+							--
+						{% else %}
+							{% if results.today.month < 10 %}{{ 0 }}{% endif %}{{ results.registry_dob.month }}/
+							{% if results.today.day < 10 %}{{ 0 }}{% endif %}{{ results.registry_dob.day }}/
+							{{ results.registry_dob.year }}
+						{% endif %}
+					</td>
 					<td>
 						Date of Visit: 
 						{% if results.today.month < 10 %}{{ 0 }}{% endif %}{{ results.today.month }}/
@@ -20,22 +34,40 @@
 			</table>
 		</div>
 		<div class="form-category">
-			<h2 class="category-title collapsed">Entered Data</h2>
-			<strong>Primary Tumor:</strong>{{ results.primary_tumor }}<br>
-			<strong>Age:</strong>{{ results.age }}
-			<strong>Charlson Co-Morbidity Index:</strong>{{ results.charlson_co_morbidity }}<br>
-			<strong>Karnofsky's Performance Status:</strong>{{ results.karnofsky_performance }}<br>
-			<strong>Peritoneal Carcinomatosis Index:</strong>{{ results.peritoneal_carcinomatosis }}<br>
-			<strong>Completeness of Cytoreduction Score:</strong>{{ results.cytoreduction_completeness }}
-		</div>
-		<div class="form-category">
 			<h2 class="category-title collapsed">Length of Stay</h2>
 		</div>
 		<div class="form-category">
 			<h2 class="category-title collapsed">Discharge Disposition</h2>
 		</div>
+		<div class="form-category">
+			<h2 class="category-title collapsed">Readmission</h2>
+		</div>
+		<div class="form-category">
+			<h2 class="category-title collapsed">Morbidity (90 days)</h2>
+		</div>
+		<div class="form-category">
+			<h2 class="category-title collapsed">Mortality (90 days)</h2>
+		</div>
+		<div class="form-category">
+			<h2 class="category-title collapsed">Overall Survival</h2>
+		</div>
+		<div class="form-category">
+			<h2 class="category-title collapsed">Progression-Free Survival</h2>
+		</div>
+		<div class="form-category">
+			<h2 class="category-title collapsed">Entered Data</h2>
+			<div>
+				<strong>Primary Tumor: </strong>{{ results.core_primary_tumor }}<br>
+				<strong>Age: </strong>{{ results.core_age }}<br>
+				<strong>Charlson Co-Morbidity Index: </strong>{{ results.core_charlson }}<br>
+				<strong>Karnofsky's Performance Status: </strong>{{ results.core_karnofsky }}<br>
+				<strong>Peritoneal Carcinomatosis Index: </strong>{{ results.core_peritoneal }}<br>
+				<strong>Completeness of Cytoreduction Score: </strong>{{ results.core_cytoreduction }}
+			</div>
+		</div>
 
 	<a href="/hipec/hipec-app/">New Calculation</a>
+	<a href="#" onclick="window.history.go(-1); return false;">Adjust Calculation</a>
 {% endblock %}
 
 {% block scripts %}

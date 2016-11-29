@@ -4,13 +4,20 @@ from hipec.models import SurvivalAnalysis
 from django import forms
 
 class HipecVariables(forms.Form):
+	# Registry
+	registry_name = forms.CharField(max_length=64, required=False)
+	registry_dob = forms.DateField(required=False)
+	
 	# Core Variables
-	primary_tumor = forms.CharField(max_length = 64)
-	age = forms.IntegerField()
-	charlson_co_morbidity = forms.IntegerField()
-	karnofsky_performance = forms.IntegerField()
-	peritoneal_carcinomatosis = forms.IntegerField()
-	cytoreduction_completeness = forms.IntegerField()
+	core_primary_tumor = forms.CharField(max_length=64)
+	core_age__upper = forms.IntegerField()
+	core_age__lower = forms.IntegerField()
+	core_charlson__upper = forms.IntegerField()
+	core_charlson__lower = forms.IntegerField()
+	core_karnofsky = forms.IntegerField()
+	core_peritoneal__upper = forms.IntegerField()
+	core_peritoneal__lower = forms.IntegerField()
+	core_cytoreduction = forms.IntegerField()
 
 def hipec_app(request):
 	if request.method == 'POST':
