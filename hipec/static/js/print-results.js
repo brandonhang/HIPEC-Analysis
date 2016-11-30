@@ -19,6 +19,14 @@ function printResults() {
 				+ "text-align: right;"
 			+ "}"
 			
+			+ "#n {"
+				+ "text-align: left;"
+			+ "}"
+			
+			+ "#break {"
+				+ "display: none;"
+			+ "}"
+			
 			+ "h2.category-title {"
 				+ "font-family: 'Verdana', sans-serif;"
 				+ "margin: 0.5em 0;"

@@ -272,7 +272,7 @@ class SurvivalAnalysis(models.Model):
 				return 0
 			else:
 				percent = home / float(total)
-				percent = '%.2f' % round(percent * 100, 2)
+				percent = int(round(percent * 100))
 				return percent
 		''' End home_disposition() '''
 		
@@ -291,7 +291,7 @@ class SurvivalAnalysis(models.Model):
 				return 0
 			else:
 				percent = true / float(total)
-				percent = '%.2f' % round(percent * 100, 2)
+				percent = int(round(percent * 100))
 				return percent
 		''' End calc_readmit() '''
 		
@@ -325,7 +325,12 @@ class SurvivalAnalysis(models.Model):
 				return 0
 			else:
 				percent = true / float(total)
-				percent = '%.2f' % round(percent * 100, 2)
+				
+				if (mode):
+					percent = int(round(percent * 100))
+				else:
+					percent = '%.1f' % round(percent * 100, 1)
+				
 				return percent
 		''' End calc_morb_mort() '''
 		
@@ -482,10 +487,10 @@ class SurvivalAnalysis(models.Model):
 			#calculate the survival probability for t=5
 			surv_for_5=kmf.predict(60)
 			
-			surv_median = '%.2f' % round(kmf.median_, 2)
-			year_1_surv = '%.2f' % round(surv_for_1 * 100, 2)
-			year_3_surv = '%.2f' % round(surv_for_3 * 100, 2)
-			year_5_surv = '%.2f' % round(surv_for_5 * 100, 2)
+			surv_median = int(round(kmf.median_))
+			year_1_surv = int(round(surv_for_1 * 100))
+			year_3_surv = int(round(surv_for_3 * 100))
+			year_5_surv = int(round(surv_for_5 * 100))
 			
 			overall_surv_stats = {}
 			overall_surv_stats['Coordinates'] = coordinates
@@ -550,10 +555,10 @@ class SurvivalAnalysis(models.Model):
 			#calculate the progression free survival probability for t=5 years
 			surv_for_5 = kmf.predict(60)
 			
-			surv_median = '%.2f' % round(kmf.median_, 2)
-			year_1_surv = '%.2f' % round(surv_for_1 * 100, 2)
-			year_3_surv = '%.2f' % round(surv_for_3 * 100, 2)
-			year_5_surv = '%.2f' % round(surv_for_5 * 100, 2)
+			surv_median = int(round(kmf.median_))
+			year_1_surv = int(round(surv_for_1 * 100))
+			year_3_surv = int(round(surv_for_3 * 100))
+			year_5_surv = int(round(surv_for_5 * 100))
 			
 			prog_free_stats = {}
 			prog_free_stats['Coordinates'] = coordinates
@@ -587,9 +592,14 @@ class SurvivalAnalysis(models.Model):
 		if len(filtered_data) == 0:
 			return captured_data
 		
+		# Basic statistical data
 		basic_stats = getStats(filtered_data)
+		# Overall survival
 		overall_survival = overall_survival_analysis(filtered_data)
+		# Progression-free survival
 		progression_free = progression_free_analysis(filtered_data)
+		# Number of data points
+		num_patients = len(filtered_data)
 		
 		# Filtering and processing of data
 		today = datetime.date.today()
@@ -615,5 +625,6 @@ class SurvivalAnalysis(models.Model):
 		captured_data.update({'Readmission': readmission})
 		captured_data.update({'Morbidity': morbidity})
 		captured_data.update({'Mortality': mortality})
+		captured_data.update({'N': num_patients})
 		
 		return captured_data

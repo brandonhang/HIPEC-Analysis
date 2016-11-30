@@ -51,7 +51,14 @@ function buildGraphs(jsonStr) {
 		kapMeiData1.addRows(jasonBourne.OverallSurvival.Coordinates);
 		
 		var options = {
-			hAxis: { title: 'Months' },
+			hAxis: {
+				title: 'Months',
+				viewWindow: {
+					min: 0,
+					max: 60
+				},
+				ticks: [0, 12, 24, 36, 48, 60]
+			},
 			vAxis: { title: 'Survival' },
 			legend: { position: 'none' },
 			width: $(window).width() * 0.8,
@@ -88,7 +95,14 @@ function resizeGraphs(mod1, mod2) {
 		colors: ['#d9534f']
 	};
 	var lineOptions = {
-		hAxis: { title: 'Months' },
+		hAxis: {
+			title: 'Months',
+			viewWindow: {
+				min: 0,
+				max: 60
+			},
+			ticks: [0, 12, 24, 36, 48, 60]
+		},
 		vAxis: { title: 'Survival' },
 		legend: { position: 'none' },
 		width: $(window).width() * mod1,

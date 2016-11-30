@@ -32,6 +32,12 @@
 						-->{{ results.today.year }}
 					</td>
 				</tr>
+				<tr>
+					<td id="n" colspan="2">
+						<br id="break">
+						<span>Number of Data Samples: {{ results.N }}</span>
+					</td>
+				</tr>
 			</table>
 		</div>
 		<div class="form-category">
@@ -86,13 +92,13 @@
 					Median = {{ results.ProgressionFree.Median }} Months
 				</li>
 				<li>
-					1-Year Average = {{ results.ProgressionFree.1Year }} Months
+					1-Year Average = {{ results.ProgressionFree.1Year }}%
 				</li>
 				<li>
-					3-Year Average = {{ results.ProgressionFree.3Year }} Months
+					3-Year Average = {{ results.ProgressionFree.3Year }}%
 				</li>
 				<li>
-					5-Year Average = {{ results.ProgressionFree.5Year }} Months
+					5-Year Average = {{ results.ProgressionFree.5Year }}%
 				</li>
 			</ul>
 		</div>
@@ -104,10 +110,10 @@
 					Median = {{ results.OverallSurvival.Median }} Months
 				</li>
 				<li>
-					3-Year Average = {{ results.OverallSurvival.3Year }} Months
+					3-Year Average = {{ results.OverallSurvival.3Year }}%
 				</li>
 				<li>
-					5-Year Average = {{ results.OverallSurvival.5Year }} Months
+					5-Year Average = {{ results.OverallSurvival.5Year }}%
 				</li>
 			</ul>
 		</div>
