@@ -59,7 +59,14 @@ function buildGraphs(jsonStr) {
 				},
 				ticks: [0, 12, 24, 36, 48, 60]
 			},
-			vAxis: { title: 'Survival' },
+			vAxis: {
+				title: 'Survival',
+				viewWindow: {
+					min: 0,
+					max: 1
+				},
+				ticks: [0, 0.25, 0.5, 0.75, 1]
+			},
 			legend: { position: 'none' },
 			width: $(window).width() * 0.8,
 			height: $(window).width() * 0.45,
@@ -103,7 +110,14 @@ function resizeGraphs(mod1, mod2) {
 			},
 			ticks: [0, 12, 24, 36, 48, 60]
 		},
-		vAxis: { title: 'Survival' },
+		vAxis: {
+			title: 'Survival',
+			viewWindow: {
+				min: 0,
+				max: 1
+			},
+			ticks: [0, 0.25, 0.5, 0.75, 1]
+		},
 		legend: { position: 'none' },
 		width: $(window).width() * mod1,
 		height: $(window).width() * mod2,

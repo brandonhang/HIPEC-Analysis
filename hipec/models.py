@@ -383,7 +383,8 @@ class SurvivalAnalysis(models.Model):
 						and op_data['Age'] <= captured_data['core_age__upper'] \
 						and op_data['CCI'] >= captured_data['core_charlson__lower'] \
 						and op_data['CCI'] <= captured_data['core_charlson__upper'] \
-						and op_data['KPS'] == captured_data['core_karnofsky'] \
+						and op_data['KPS'] >= captured_data['core_karnofsky__lower'] \
+						and op_data['KPS'] <= captured_data['core_karnofsky__upper'] \
 						and op_data['PCI'] >= captured_data['core_peritoneal__lower'] \
 						and op_data['PCI'] <= captured_data['core_peritoneal__upper'] \
 						and op_data['CC'] == captured_data['core_cytoreduction']:

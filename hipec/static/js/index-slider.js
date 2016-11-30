@@ -19,7 +19,7 @@ var coreSliders = [
 	},
 	{
 		'name': 'core_karnofsky',
-		'type': 'categorical',
+		'type': 'continuous',
 		'min': 10,
 		'max': 100,
 		'pips': 10,
